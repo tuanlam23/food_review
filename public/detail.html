@@ -31,6 +31,11 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
+        body {
+            margin: 0px 0px;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
         .dropdown.dropdown-lg .dropdown-menu {
             margin-top: -1px;
             padding: 6px 20px;
@@ -72,11 +77,91 @@
 
         .dropdown-search {
             background-color: #fff;
+            font-size: 12px;
+        }
+
+        .dropdown-user{
+            position: inherit;
         }
         .form-search{
             margin: 0;
             padding: 0;
         }
+        .sign-user{
+            padding: 5px 0px;
+        }
+
+        img.img-profile{
+            height: 30px;
+        }
+
+        .sf-left{
+
+            float: left;
+            width: 90px;
+            font-size: 14px;
+        }
+        .sf-left .sf-cate{
+            width: 100%;
+            float: left;
+            display: block;
+            margin: 0px;
+            padding: 0px;
+        }
+        .sf-left .sf-cate li{
+            display: block;
+            cursor: pointer;
+            float: left;
+            width: 100%;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .sf-right{
+            float: right;
+            width: 450px;
+            min-height: 240px;
+            background: #fff;
+            box-sizing: border-box;
+            border-left: 1px solid #eee;
+        }
+        .sf-right .sf-result{
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .sf-right .sf-result>ul{
+            max-height: 230px;
+            float: left;
+            width: 100%;
+            overflow: auto;
+            padding: 0px;
+            margin: 0px;
+        }
+        .sf-right .sf-result li {
+            width: 50%;
+            float: left;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .sf-right .sf-result li label{
+            white-space: nowrap;
+            cursor: pointer;
+            max-width: 195px;
+            text-overflow: ellipsis;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: -10px;
+        }
+        .sf-bottom {
+            border-top: 1px solid #eee;
+            float: left;
+            width: 100%;
+            text-align: center;
+        }
+
 
         @media screen and (min-width: 768px) {
             #adv-search {
@@ -92,72 +177,311 @@
                 min-width: 600px;
             }
         }
+        @media screen and (max-width: 768px) {
+
+            .dropdown.dropdown-lg {
+                position: static !important;
+            }
+
+            .dropdown.dropdown-lg .dropdown-menu {
+                min-width: 600px;
+            }
+        }
+        @media screen and (max-width: 610px) {
+
+            .dropdown.dropdown-lg {
+                position: static !important;
+            }
+
+            .dropdown.dropdown-lg .dropdown-menu {
+                min-width: 500px;
+            }
+
+            .sf-left{
+
+                float: left;
+                width: 90px;
+                font-size: 14px;
+            }
+            .sf-left .sf-cate{
+                width: 100%;
+                float: left;
+                display: block;
+                margin: 0px;
+                padding: 0px;
+            }
+            .sf-left .sf-cate li{
+                display: block;
+                cursor: pointer;
+                float: left;
+                width: 100%;
+                padding: 5px;
+                border-bottom: 1px solid #eee;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            .sf-right{
+                float: right;
+                width: 350px;
+                min-height: 240px;
+                background: #fff;
+                box-sizing: border-box;
+                border-left: 1px solid #eee;
+            }
+            .sf-right .sf-result{
+                padding: 5px;
+                box-sizing: border-box;
+            }
+
+            .sf-right .sf-result>ul{
+                max-height: 230px;
+                float: left;
+                width: 100%;
+                overflow: auto;
+                padding: 0px;
+                margin: 0px;
+            }
+            .sf-right .sf-result li {
+                width: 50%;
+                float: left;
+                box-sizing: border-box;
+                list-style: none;
+            }
+            .sf-right .sf-result li label{
+                white-space: nowrap;
+                cursor: pointer;
+                max-width: 195px;
+                text-overflow: ellipsis;
+                display: inline-block;
+                font-size: 14px;
+                margin-top: -10px;
+            }
+        }
+        @media screen and (max-width: 510px) {
+
+            .dropdown.dropdown-lg {
+                position: static !important;
+            }
+
+            .dropdown.dropdown-lg .dropdown-menu {
+                min-width: 350px;
+            }
+
+            .sf-left{
+
+                float: left;
+                width: 70px;
+                font-size: 14px;
+                background-color: #17a2b8;
+            }
+            .sf-left .sf-cate{
+                width: 100%;
+                float: left;
+                display: block;
+                margin: 0px;
+                padding: 0px;
+            }
+            .sf-left .sf-cate li{
+                display: block;
+                cursor: pointer;
+                float: left;
+                width: 100%;
+                padding: 5px;
+                border-bottom: 1px solid #eee;
+                box-sizing: border-box;
+                position: relative;
+                background-color: #9fa9b9;
+            }
+
+            .sf-right{
+                float: right;
+                width: 200px;
+                min-height: 240px;
+                background: #fff;
+                box-sizing: border-box;
+                border-left: 1px solid #eee;
+            }
+            .sf-right .sf-result{
+                padding: 5px;
+                box-sizing: border-box;
+            }
+
+            .sf-right .sf-result>ul{
+                max-height: 230px;
+                float: left;
+                width: 100%;
+                overflow: auto;
+                padding: 0px;
+                margin: 0px;
+            }
+            .sf-right .sf-result li {
+                width: 100%;
+                float: left;
+                box-sizing: border-box;
+                list-style: none;
+            }
+            .sf-right .sf-result li label{
+                white-space: nowrap;
+                cursor: pointer;
+                max-width: 195px;
+                text-overflow: ellipsis;
+                display: inline-block;
+                font-size: 14px;
+                margin-top: -10px;
+            }
+        }
+
+
     </style>
 </head>
 
 <body>
 <!--============================= HEADER =============================-->
 <div class="dark-bg sticky-top">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="index.html">Listing</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    <button class="navbar-toggler" type="submit" data-toggle="collapse" data-target="#navbarNavDropdown"
                             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-menu"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                         <div class="row">
-                            <div class="form-group col-sm-2 form-search">
+                            <div class="form-group col-md-2 form-search">
                                 <select class="form-control">
                                     <option value="0" selected>Hà Nội</option>
                                     <option value="1">Hồ Chí Minh</option>
                                 </select>
                             </div>
-                            <div class="col-md-10 form-search">
-                                <div class="input-group" id="adv-search">
-                                    <input type="text" class="form-control" placeholder="Search for snippets"/>
-                                    <div class="input-group-btn">
-                                        <div class="btn-group" role="group">
-                                            <div class="dropdown dropdown-lg">
-                                                <button type="button" class="btn btn-default dropdown-toggle"
-                                                        data-toggle="dropdown" aria-expanded="false"><span
-                                                        class="caret"></span></button>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-search"
-                                                     role="menu">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-group">
-                                                            <label for="filter">Filter by</label>
-                                                            <select class="form-control">
-                                                                <option value="0" selected>All Snippets</option>
-                                                                <option value="1">Featured</option>
-                                                                <option value="2">Most popular</option>
-                                                                <option value="3">Top rated</option>
-                                                                <option value="4">Most commented</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="contain">Author</label>
-                                                            <input class="form-control" type="text"/>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="contain">Contains the words</label>
-                                                            <input class="form-control" type="text"/>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary"><span
-                                                                class="glyphicon glyphicon-search"
-                                                                aria-hidden="true"></span></button>
-                                                    </form>
+                            <form class="form-horizontal" role="form">
+                                <div class="col-md-8 form-search">
+                                    <div class="input-group" id="adv-search">
+                                        <input type="text" class="form-control" placeholder="Món ăn"/>
+                                        <div class="input-group-btn">
+                                            <div class="btn-group" role="group">
+                                                <div class="dropdown dropdown-lg">
+                                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                                            data-toggle="dropdown" aria-expanded="false"><span
+                                                            class="caret"></span></button>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-search"
+                                                         role="menu">
+
+                                                            <div class="sf-left">
+                                                                <ul class="sf-cate">
+                                                                    <li>
+                                                                        <i class="fa fa-location-arrow"></i>
+                                                                        <label>Khu vực</label>
+                                                                        <i class="fa fa-angle-right sf-i-right"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="fa fa-bars"></i>
+                                                                        <label>Phân loại</label>
+                                                                        <i class="fa fa-angle-right sf-i-right"></i>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="sf-right">
+                                                                <div class="sf-result">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input name="nam" type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input name="nam" type="checkbox">
+                                                                            <label for="">Cầu Giấy</label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="sf-bottom">
+                                                                <button type="submit" class="btn btn-primary btn-sm"><span>Tìm kiếm</span></button>
+                                                            </div>
+                                                    </div>
                                                 </div>
+                                                <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
                                             </div>
-                                            <button type="button" class="btn btn-primary"><span class="fa fa-search"></span></button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
+                        <ul class="navbar-nav pb-lg-0 ml-lg-5 sign-user">
+                            <!--<li class="nav-item">-->
+                                <!--<a class="nav-link" href="/blog">Đăng nhập</a>-->
+                            <!--</li>-->
 
+                            <li class="nav-item dropdown no-arrow dropdown-user">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                    <img class="img-profile rounded-circle img-profile" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in dropdown-search" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Activity Log
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
