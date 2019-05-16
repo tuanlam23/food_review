@@ -130,6 +130,10 @@ img.img-profile{
     text-align: center;
 }
 
+.yummy-logo{
+    font-family: 'Shadows Into Light Two', cursive;
+}
+
 
 @media screen and (min-width: 768px) {
     #adv-search {

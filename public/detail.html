@@ -18,6 +18,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
     <!-- Simple line Icon -->
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
     <link rel="stylesheet" href="css/simple-line-icons.css">
     <!-- Themify Icon -->
     <link rel="stylesheet" href="css/themify-icons.css">
@@ -33,6 +34,67 @@
 
     <link rel="stylesheet" href="css/header.css">
     <style>
+        .top-user{
+            background-color: #FFFFFF;
+            padding: 20px 0;
+            clear: both;
+            min-width: 50px;
+        }
+
+        .list{
+            display: block;
+            font-size: 14px;
+        }
+        .list .yummy-toolbar{
+            box-sizing: border-box;
+            /*padding: px;*/
+            position: relative;
+            z-index: 10;
+            background: #dddddd;
+        }
+        .list .yummy-toolbar .ym-clearbox{
+            left: 0;
+            right: 0;
+        }
+
+        .list .yummy-toolbar .ym-clearbox ul{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            background: #ddd;
+            overflow: hidden;
+        }
+        .list .yummy-toolbar .ym-clearbox ul li{
+            list-style: none;
+        }
+
+
+        .list .yummy-toolbar .ym-clearbox ul li a{
+            position: relative;
+            display: block;
+            padding: 15px 20px;
+            float: left;
+            color: #666;
+            height: 45px;
+            box-sizing: border-box;
+        }
+        .list .yummy-toolbar .ym-clearbox ul li a.current{
+            color: #c00;
+            border-bottom: #c00 1px solid;
+            background: #fff;
+        }
+        .list .btn-more{
+            text-align: center;
+            padding: 5px 0;
+            background: #049ec5;
+            display: inline-block;
+            border-radius: 2px;
+            cursor: pointer;
+            width: 100%;
+            color: white;
+        }
+
+
         .recommendation{
             border: 1px solid #d6d6d6;
             box-sizing: border-box;
@@ -113,6 +175,11 @@
         img.img-product{
             height: 142px;
         }
+        .follow{
+            float: right;
+            background: #ddd;
+            padding: 1px 5px;
+        }
 
         @media screen and (min-width: 768px) {
             .recommendation{
@@ -132,7 +199,7 @@
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html">Listing</a>
+                    <a class="navbar-brand yummy-logo" href="index.html">Yummy</a>
                     <button class="navbar-toggler" type="submit" data-toggle="collapse" data-target="#navbarNavDropdown"
                             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-menu"></span>
@@ -355,7 +422,7 @@
 <!--============================= BOOKING DETAILS =============================-->
 <section class="light-bg booking-details_wrap">
     <div class="container">
-        <div class="row recommendation">
+        <div class="row recommendation mb-4">
             <div class="col-sm-12 re-header p-2">
                 <div class="row">
                     <div class="col-sm-6 re-title">
@@ -374,51 +441,6 @@
                                     <a href="#" class="shop-title">
                                         Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
                                     </a>
-                                    <p>3 Reviews</p>
-                                    <ul>
-                                        <li>
-                                            <p>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <span class="icon-location-pin"></span>
-                                            <p>So 84 Duy Tan, Ha noi</p>
-                                        </li>
-                                    </ul>
-                                        <div class="items-review">
-                                            <div class="avatar">
-                                                <a href="#">
-                                                    <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="users-content block-with-text">
-                                                <a href="#" target="_blank"><b>Nam Nguyen</b></a>
-                                                <a href="" target="_blank">
-                                                    TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
-                                                    Trân châu ở đây k giống như những chỗ khac đâu ạ.
-                                                    Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
-                        <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid img-product" alt="#">
-                                <div class="featured-title-box f-content">
-                                    <a href="#" class="shop-title">
-                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
-                                    </a>
-                                    <p>3 Reviews</p>
                                     <ul>
                                         <li>
                                             <p>
@@ -450,93 +472,12 @@
                                         </div>
 
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
-                        <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid img-product" alt="#">
-                                <div class="featured-title-box f-content">
-                                    <a href="#" class="shop-title">
-                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
-                                    </a>
-                                    <p>3 Reviews</p>
-                                    <ul>
-                                        <li>
-                                            <p>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <span class="icon-location-pin"></span>
-                                            <p>So 84 Duy Tan, Ha noi</p>
-                                        </li>
-                                    </ul>
                                     <div class="items-review">
-                                        <div class="avatar">
-                                            <a href="#">
-                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="users-content block-with-text">
-                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
-                                            <a href="" target="_blank">
-                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
-                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
-                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
-                        <div class="featured-place-wrap">
-                            <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid img-product" alt="#">
-                                <div class="featured-title-box f-content">
-                                    <a href="#" class="shop-title">
-                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
-                                    </a>
-                                    <p>3 Reviews</p>
-                                    <ul>
-                                        <li>
-                                            <p>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <span class="icon-location-pin"></span>
-                                            <p>So 84 Duy Tan, Ha noi</p>
-                                        </li>
-                                    </ul>
-                                    <div class="items-review">
-                                        <div class="avatar">
-                                            <a href="#">
-                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="users-content block-with-text">
-                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
-                                            <a href="" target="_blank">
-                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
-                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
-                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
-                                            </a>
-                                        </div>
-
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
                                     </div>
                                 </div>
                             </a>
@@ -550,7 +491,6 @@
                                     <a href="#" class="shop-title">
                                         Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
                                     </a>
-                                    <p>3 Reviews</p>
                                     <ul>
                                         <li>
                                             <p>
@@ -582,6 +522,13 @@
                                         </div>
 
                                     </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -589,12 +536,11 @@
                     <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
                         <div class="featured-place-wrap">
                             <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid img-product" alt="#">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
                                 <div class="featured-title-box f-content">
                                     <a href="#" class="shop-title">
                                         Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
                                     </a>
-                                    <p>3 Reviews</p>
                                     <ul>
                                         <li>
                                             <p>
@@ -626,6 +572,13 @@
                                         </div>
 
                                     </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -633,12 +586,11 @@
                     <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
                         <div class="featured-place-wrap">
                             <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid img-product" alt="#">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
                                 <div class="featured-title-box f-content">
                                     <a href="#" class="shop-title">
                                         Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
                                     </a>
-                                    <p>3 Reviews</p>
                                     <ul>
                                         <li>
                                             <p>
@@ -670,6 +622,13 @@
                                         </div>
 
                                     </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -677,12 +636,11 @@
                     <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
                         <div class="featured-place-wrap">
                             <a href="detail.html">
-                                <img src="images/featured1.jpg" class="img-fluid img-product" alt="#">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
                                 <div class="featured-title-box f-content">
                                     <a href="#" class="shop-title">
                                         Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
                                     </a>
-                                    <p>3 Reviews</p>
                                     <ul>
                                         <li>
                                             <p>
@@ -713,6 +671,163 @@
                                             </a>
                                         </div>
 
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
                                     </div>
                                 </div>
                             </a>
@@ -722,8 +837,436 @@
             </div>
 
         </div>
-        <div class="row">
+        <div class="row list mt-4">
+            <div class="col-sm-12 yummy-toolbar">
+                <div class="ym-clearbox" style="top: 0">
+                    <ul>
+                        <li><a href="#" class="current">Moi Nhat</a></li>
+                        <li><a href="#">Da Luu</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 pt-2">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
 
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <a href="detail.html">
+                                <img src="https://images.foody.vn/res/g67/664448/prof/s576x330/foody-upload-api-foody-mobile-sun-tea-1-190103161518.jpg" class="img-fluid img-product" alt="#">
+                                <div class="featured-title-box f-content">
+                                    <a href="#" class="shop-title">
+                                        Tiger Sugar - Đường Nâu Sữa Đài Loan - Thái Phiên
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <span class="icon-location-pin"></span>
+                                            <p>So 84 Duy Tan, Ha noi</p>
+                                        </li>
+                                    </ul>
+                                    <div class="items-review">
+                                        <div class="avatar">
+                                            <a href="#">
+                                                <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="users-content block-with-text">
+                                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                                            <a href="" target="_blank">
+                                                TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                                                Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                                                Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="items-review">
+                                        <span>3 Reviews</span>
+                                        <a href="#" class="follow">
+                                            <i class="fa fa-bookmark"></i>
+                                            Lưu
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <a href="#" class="btn-more">
+                            Xem thêm...
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid top-user">
+        <ul class="col-lg-12">
+            <li style="list-style: none">
+                <a href="#" style="color: #c00; font-size: 16px; font-weight: 800" class="pl-5">Top thành viên</a>
+            </li>
+        </ul>
+        <div class="col-lg-12 justify-content-center">
+            <div>
+                gfgfgg
+            </div>
         </div>
     </div>
 </section>
@@ -735,8 +1278,8 @@
             <div class="col-md-12">
                 <div class="copyright">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    <p>Copyright &copy; 2018 Listing. All rights reserved | This template is made with <i
-                            class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <p>Copyright &copy; 2018 Listing <i
+                            class="ti-heart" aria-hidden="true"></i><a href="https://colorlib.com" target="_blank"></a>
                     </p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <ul>
