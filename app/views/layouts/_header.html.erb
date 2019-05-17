@@ -1,0 +1,152 @@
+<div class="dark-bg sticky-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand yummy-logo" href="indexs.html">Yummy</a>
+          <button class="navbar-toggler" type="submit" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-menu"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <div class="row">
+              <div class="form-group col-md-2 form-search">
+                <select class="form-control">
+                  <option value="0" selected>Hà Nội</option>
+                  <option value="1">Hồ Chí Minh</option>
+                </select>
+              </div>
+              <form class="form-horizontal col-md-8" role="form">
+                <div class="form-search">
+                  <div class="input-group" id="adv-search">
+                    <input type="text" class="form-control" placeholder="Món ăn"/>
+                    <div class="input-group-btn">
+                      <div class="btn-group" role="group">
+                        <div class="dropdown dropdown-lg">
+                          <button type="button" class="btn btn-default dropdown-toggle"
+                                  data-toggle="dropdown" aria-expanded="false"><span
+                          class="caret"></span></button>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-search"
+                               role="menu">
+
+                            <div class="sf-left">
+                              <ul class="sf-cate">
+                                <li>
+                                  <i class="fa fa-location-arrow"></i>
+                                  <label>Khu vực</label>
+                                  <i class="fa fa-angle-right sf-i-right"></i>
+                                </li>
+                                <li>
+                                  <i class="fa fa-bars"></i>
+                                  <label>Phân loại</label>
+                                  <i class="fa fa-angle-right sf-i-right"></i>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="sf-right">
+                              <div class="sf-result">
+                                <ul>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input name="nam" type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                  <li>
+                                    <input name="nam" type="checkbox">
+                                    <label for="">Cầu Giấy</label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div class="sf-bottom">
+                              <button type="submit" class="btn btn-primary btn-sm"><span>Tìm kiếm</span></button>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <ul class="navbar-nav pb-lg-0 ml-lg-5 sign-user">
+              <% if current_user.blank? %>
+                <li class="nav-item">
+                <a class="nav-link" href="<%= new_user_session_path %>">Đăng nhập</a>
+                </li>
+              <% else %>
+                <li class="nav-item dropdown no-arrow dropdown-user">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.name %></span>
+                  <img class="img-profile rounded-circle img-profile" src="<%= current_user.image %>">
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in dropdown-search" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<%= destroy_user_session_path %>">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

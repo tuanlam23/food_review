@@ -245,7 +245,7 @@ img.img-profile{
         float: left;
         width: 70px;
         font-size: 14px;
-        background-color: #17a2b8;
+        /*background-color: #17a2b8;*/
     }
     .sf-left .sf-cate{
         width: 100%;
@@ -263,7 +263,7 @@ img.img-profile{
         border-bottom: 1px solid #eee;
         box-sizing: border-box;
         position: relative;
-        background-color: #9fa9b9;
+        /*background-color: #9fa9b9;*/
     }
 
     .sf-right{
