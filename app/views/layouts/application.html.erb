@@ -27,13 +27,6 @@
 
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/common00.css">
-  </head>
-
-  <body>
-    <%= render '/layouts/header' %>
-    <%= yield %>
-    <%= render '/layouts/footer' %>
-
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -41,6 +34,15 @@
     <script src="/js/jquery.magnific-popup.js"></script>
     <!-- Swipper Slider JS -->
     <script src="/js/swiper.min.js"></script>
+  </head>
+
+  <body>
+
+    <%= render '/layouts/header' %>
+    <%= yield %>
+    <%= render '/layouts/footer' %>
+
+
     <script>
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 3,
