@@ -6,3 +6,4 @@ def create_categories
   Category.create(name: 'Trà sữa')
   Category.create(name: 'Ăn chay')
 end
+create_categories

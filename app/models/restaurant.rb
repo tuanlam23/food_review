@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
-  has_one :category
-  has_one :area
+  belongs_to :category
+  belongs_to :area
+  has_many :foods
   mount_uploader :picture, PictureUploader
 
   def self.factory
