@@ -37,6 +37,7 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
+gem "carrierwave"
 
 
 group :development, :test do
