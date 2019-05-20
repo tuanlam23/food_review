@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     delete 'sign_out', :to => 'devise/sessions#destroy'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'home#index'
+  root 'restaurants#index'
+
+  resources :restaurants, except: [:index]
 
   namespace :admin do
     root 'admin#index'

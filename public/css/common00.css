@@ -150,3 +150,36 @@ img.img-product{
         font-size: 10px;
     }
 }
+
+.detail h1{
+    font-weight: 700;
+    float: left;
+    padding: 5px 0 2px;
+    font-size: 20px;
+    line-height: 1.2em;
+    text-shadow: 0 1px 1px #fff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: Arial;
+    color: #333;
+}
+
+.detail .category-items a{
+    color: #888;
+    text-decoration: none;
+    font-size: 12px;
+}
+.res-rate{
+    font-size: 30px;
+    color: yellow;
+}
+
+.res-address span{
+    color: #555;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    clear: both;
+    text-transform: capitalize;
+    overflow: hidden;
+}

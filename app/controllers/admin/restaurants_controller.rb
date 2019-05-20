@@ -13,9 +13,16 @@ class Admin::RestaurantsController < Admin::AdminController
   end
 
   def create
-    binding.pry
-    Restaurant.create(restaurant_params)
-    redirect_to admin_restaurants_path
+    @restaurant = Restaurant.new(restaurant_params)
+    params[:food].each do |food|
+      @restaurant.foods << Food.new(food_params(food))
+    end
+    @restaurant.save
+    if @restaurant.valid?
+     redirect_to admin_restaurants_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -24,8 +31,12 @@ class Admin::RestaurantsController < Admin::AdminController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description, :picture, :open_time,
-                  :area_id, :phone, :address)
+    params.require(:restaurant).permit(:name, :description, :open_time,
+                  :area_id, :phone, :address, :category_id, :picture)
+  end
+
+  def food_params(food_params)
+    food_params.permit(:name, :price, :picture)
   end
 
 end
