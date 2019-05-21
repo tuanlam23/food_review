@@ -33,4 +33,138 @@
       </div>
     </div>
   </div>
+
+  <div class="container pt-3">
+    <div class="row fd-list mb-4">
+      <div class="col-sm-12 re-header p-2">
+        <div class="row">
+          <div class="col-sm-6 re-title">
+            <b>Menu</b>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+      </div>
+      <% @restaurant.foods.each do |food|%>
+          <div class="col-6">
+            <div class="row fd-item">
+              <div class="col-4 p-0 fd-item-1">
+                <img src="<%= food.picture.url if food.picture? %>" class="img-fluid img-food" alt="#">
+              </div>
+              <div class="col-8 fd-detail fd-item-1">
+                <p><%= food.name %></p>
+                <p><%= number_to_currency(food.price, unit: "VND", format: "%n %u", precision: 0)%></p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-lg-8 answer">
+        <div class="row pl-2">
+          <div class="review-user fd-clearbox">
+            <div class="re-avatar">
+              <a href="#" class="ru-avatar">
+                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>"/>
+              </a>
+            </div>
+          </div>
+          <div class="user-prof">
+            <div class="re-rate">
+              <p>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+              </p>
+            </div>
+            <div class="ru-row">
+              <a href="#" class="ru-name">
+                Nguyen NAm VAn
+              </a>
+            </div>
+            <div class="ru-stats">
+              <span>21/5/2019 21:03</span>
+            </div>
+          </div>
+        </div>
+        <div class="re-des fd-clearbox">
+          <div class="re-detail-des">
+            <span>
+              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
+              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
+              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
+              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
+            </span>
+          </div>
+        </div>
+        <div class="re-photo">
+          <div class="item-photo">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+
+          </div>
+
+        </div>
+        <div class="re-photo">
+          <div class="item-photo">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+
+          </div>
+
+        </div>
+        <div class="re-photo">
+          <div class="item-photo">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+
+          </div>
+
+        </div>
+        <div class="re-photo">
+          <div class="item-photo">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+
+          </div>
+
+        </div>
+        <div class="re-photo">
+          <div class="item-photo">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+          </div>
+        </div>
+
+        <div>
+          <div class="review-comment fd-clearbox">
+            <div class="fc-toolbar">
+              <div class="icon-comment">
+                <a href="#">
+                  <i class="fa fa-comment"></i>
+                  Thảo luận
+                </a>
+              </div>
+            </div>
+            <div class="fc-comment">
+              <div class="rv-items">
+                <div class="form-cmm">
+                  <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+                </div>
+              </div>
+              <div class="fc-input">
+                <%= text_area_tag 'comment'%>
+              </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
 </section>

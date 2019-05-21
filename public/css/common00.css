@@ -180,6 +180,245 @@ img.img-product{
     line-height: 20px;
     text-overflow: ellipsis;
     clear: both;
+    clear: both;
     text-transform: capitalize;
     overflow: hidden;
+}
+@media (max-width: 768px) {
+    .container{
+        width: 100%;
+        max-width: none;
+    }
+}
+
+.fd-list{
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.fd-list .re-header{
+    padding-left: 20px;
+    border-bottom: 1px solid #d6d6d6;
+}
+.fd-item{
+    padding: 10px;
+}
+.fd-detail p{
+   color: #464646;
+    font-size: 16px;
+    font-family: Arial;
+    font-weight: 700;
+}
+.fd-item-1{
+    border-bottom: 1px solid #f5f5f5;
+}
+img.img-food{
+    max-height: 70px;
+    border-radius: 2px;
+}
+.answer{
+    background: #ffffff;
+    position: relative;
+    padding: 15px 15px 0;
+    margin: 0 0 8px;
+}
+.answer .review-user{
+    position: relative;
+    padding: 0 0 5px;
+    border-bottom: #f6f6f6 1px solid;
+    margin-bottom: 5px;
+
+}
+.fd-clearbox{
+    box-sizing: border-box;
+    float: left;
+}
+.review-user .re-avatar{
+    width: 45px;
+    margin-right: 10px;
+    float: left;
+}
+.re-avatar a.ru-avatar{
+    display: block;
+    float: left;
+    margin: 3px 5px 5px 0;
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+a.ru-avatar img{
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+}
+.user-prof{
+    float: left;
+}
+.answer .row {
+    border-bottom: #f6f6f6 1px solid;
+}
+.ru-row{
+    overflow: hidden;
+    margin: 3px 0 5px;
+    font-size: 14px;
+}
+.ru-name{
+    font-weight: 700;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    float: left;
+    padding: 0 3px 0 0;
+    box-sizing: border-box;
+    color: #333;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+}
+.ru-stats{
+    color: #666;
+    font-size: 11px;
+    clear: both;
+}
+.re-rate{
+    position: absolute;
+    right: 10px;
+    top:20px;
+    color: yellow;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    line-height: 32px;
+}
+.re-rate p{
+    font-size: 20px;
+}
+
+.re-des{
+    position: relative;
+}
+
+.re-detail-des{
+    /*max-height: 250px;*/
+    /*overflow: hidden;*/
+    position: relative;
+    padding-bottom: 1.38em;
+    margin: 0 0 5px;
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.4em;
+    word-wrap: break-word;
+    color: #333;
+}
+.re-photo{
+    position: relative;
+    margin: 1px 0 0;
+    box-sizing: border-box;
+}
+.re-photo .item-photo{
+    position: relative;
+    width: 25%;
+    display: block;
+    float: left;
+    overflow: hidden;
+    max-height: 150px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+    background: #e9ebee;
+}
+.re-photo .item-photo img{
+    /*position: absolute;*/
+    border-radius: 0;
+}
+.review-comment{
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+.review-comment>.fc-toolbar{
+    margin: 0 0 10px;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+.fc-toolbar .icon-comment{
+    display: block;
+    float: left;
+    margin: 0 20px 0 0;
+}
+.icon-comment a{
+    display: block;
+    color: #7f7f7f;
+    padding: 5px 0 0;
+    text-decoration: none;
+    outline: 0;
+}
+.fc-comment{
+    /*position: relative;*/
+}
+.fc-comment .rv-items{
+    padding: 15px;
+    margin: 0 -15px;
+    background: #f9f9f9;
+}
+.fc-comment .rv-items .form-cmm{
+    position: relative;
+    float: none;
+    margin: 0 0 10px;
+}
+.fc-comment .rv-items .form-cmm img{
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    float: left;
+}
+.fc-input{
+    margin-left: 42px;
+    border: 1px solid #e2e2e2;
+    position: relative;
+    background: #fff;
+    padding: 8px;
+}
+.fc-input textarea{
+    width: 100%;
+    outline: 0;
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    max-width: 100%;
+    line-height: 1.38em;
+    display: block;
+    z-index: 2;
+    position: relative;
+}
+.fdi-comm{
+    position: relative;
+    float: none;
+    margin: 0 0 10px;
+}
+.fdi-comm img{
+    width: 32px;
+    height: 32px;
+    float: left;
+    display: block;
+    margin: 0 10px 0 0;
+    position: relative;
+    border-radius: 100px;
+}
+
+.fdi-comm .fdi-comm-right{
+    overflow: hidden;
+    margin-left: 37px;
+    padding-right: 15px;
+}
+.fdi-comm-right a.fc-username{
+    margin: 0 5px 0 0;
+    font-weight: 700;
+    color: #333;
+    outline: 0;
+    text-decoration: none;
 }
