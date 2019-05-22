@@ -358,11 +358,12 @@ a.ru-avatar img{
 }
 .fc-comment{
     /*position: relative;*/
+    background: #f9f9f9;
 }
 .fc-comment .rv-items{
     padding: 15px;
     margin: 0 -15px;
-    background: #f9f9f9;
+
 }
 .fc-comment .rv-items .form-cmm{
     position: relative;
@@ -398,7 +399,7 @@ a.ru-avatar img{
 .fdi-comm{
     position: relative;
     float: none;
-    margin: 0 0 10px;
+    margin: 20px;
 }
 .fdi-comm img{
     width: 32px;
@@ -421,4 +422,21 @@ a.ru-avatar img{
     color: #333;
     outline: 0;
     text-decoration: none;
+}
+
+.stats .foody-toolbar{
+    position: relative;
+    z-index: 10;
+}
+.foody-toolbar>div{
+    background: #ddd;
+    padding: 0;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    height: 46px;
+}
+.microsite-sumary-new{
+    clear: both;
 }

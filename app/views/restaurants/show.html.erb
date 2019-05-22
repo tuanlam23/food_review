@@ -20,15 +20,15 @@
         </div>
         <div class="row col-12 res-address">
           <span class="fa fa-location-arrow pr-1"></span>
-          <span><%= @restaurant.address + ", " + @restaurant.area.district%></span>
+          <span><%= @restaurant.address + ", " + @restaurant.area.district %></span>
         </div>
         <div class="row col-12 res-address pt-1">
           <span class="fa fa-clock-o pr-1"></span>
-          <span><%= @restaurant.open_time%></span>
+          <span><%= @restaurant.open_time %></span>
         </div>
         <div class="row col-12 res-address pt-1">
           <span class="fa fa-phone pr-1"></span>
-          <span><%= @restaurant.phone%></span>
+          <span><%= @restaurant.phone %></span>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
           <div class="col-sm-6"></div>
         </div>
       </div>
-      <% @restaurant.foods.each do |food|%>
+      <% @restaurant.foods.each do |food| %>
           <div class="col-6">
             <div class="row fd-item">
               <div class="col-4 p-0 fd-item-1">
@@ -52,7 +52,7 @@
               </div>
               <div class="col-8 fd-detail fd-item-1">
                 <p><%= food.name %></p>
-                <p><%= number_to_currency(food.price, unit: "VND", format: "%n %u", precision: 0)%></p>
+                <p><%= number_to_currency(food.price, unit: "VND", format: "%n %u", precision: 0) %></p>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@
   </div>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-sm-12 col-lg-8 answer">
+      <div class="col-8 answer">
         <div class="row pl-2">
           <div class="review-user fd-clearbox">
             <div class="re-avatar">
@@ -102,35 +102,35 @@
         </div>
         <div class="re-photo">
           <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
 
           </div>
 
         </div>
         <div class="re-photo">
           <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
 
           </div>
 
         </div>
         <div class="re-photo">
           <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
 
           </div>
 
         </div>
         <div class="re-photo">
           <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
 
           </div>
 
         </div>
         <div class="re-photo">
           <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
           </div>
         </div>
 
@@ -144,27 +144,64 @@
                 </a>
               </div>
             </div>
+
             <div class="fc-comment">
-              <div class="rv-items">
-                <div class="form-cmm">
-                  <img src="<%= @restaurant.picture.url if @restaurant.picture?%>" alt="">
+              <div class="fdi-comm">
+                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
+                <div class="fdi-comm-right">
+                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
+                  <span>fdhsjfh djfkdjf
+                  fdlfkldkfd
+                  fdlkfldkf lkfldkf dfkdlkfd fldflks fldkl;fkd fk;ldsk;f dsfk;sdl;fd f;lf'd fdls;fl ef</span>
                 </div>
               </div>
-              <div class="fc-input">
-                <%= text_area_tag 'comment'%>
+              <div class="fdi-comm">
+                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
+                <div class="fdi-comm-right">
+                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
+                  <span>fdhsjfh djfkdjf
+                  fdlfkldkfd
+                  fdlkfldkf</span>
+                </div>
               </div>
-
+              <div class="fdi-comm">
+                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
+                <div class="fdi-comm-right">
+                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
+                  <span>fdhsjfh djfkdjf
+                  fdlfkldkfd
+                  fdlkfldkf</span>
+                </div>
+              </div>
+              <div class="fdi-comm">
+                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
+                <div class="fdi-comm-right">
+                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
+                  <span>fdhsjfh djfkdjf
+                  fdlfkldkfd
+                  fdlkfldkf</span>
+                </div>
+              </div>
+              <div class="rv-items">
+                <a href="#" class="form-cmm">
+                  <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
+                </a>
+                <div class="fc-input">
+                  <%= text_area_tag 'comment' %>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
-
-
       </div>
+      <div class="stats col-3">
+        <div class="foody-toolbar">
+          <div class="microsite-sumary-new" style="top: 0">
 
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
-
-
 </section>
