@@ -194,9 +194,29 @@
           </div>
         </div>
       </div>
-      <div class="stats col-3">
+      <div class="stats col-4">
         <div class="foody-toolbar">
           <div class="microsite-sumary-new" style="top: 0">
+            <div class="microsite-box-rating-new">
+              <div class="ratings-boxes">
+                <div class="summary">
+                  <b>16</b> bình luận
+                </div>
+                <div class="ratings">
+                  <p>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                  </p>
+                </div>
+              </div>
+              <div class="ratings-boxes-review">
+                <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
+              </div>
+
+            </div>
 
           </div>
 
@@ -205,3 +225,40 @@
     </div>
   </div>
 </section>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h6 class="modal-title">Bình luận</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form action="">
+          <div class="vote-star">
+            <p>
+              <i class="fa fa-star-o fa-2x"></i>
+              <i class="fa fa-star-o fa-2x"></i>
+              <i class="fa fa-star-o fa-2x"></i>
+              <i class="fa fa-star-o fa-2x"></i>
+              <i class="fa fa-star-o fa-2x"></i>
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Đánh giá</button>
+      </div>
+
+    </div>
+  </div>
+</div>

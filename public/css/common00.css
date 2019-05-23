@@ -440,3 +440,53 @@ a.ru-avatar img{
 .microsite-sumary-new{
     clear: both;
 }
+.microsite-box-rating-new{
+    overflow: hidden;
+}
+
+.foody-toolbar .ratings-boxes{
+    border: #eee solid 1px;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 2px;
+}
+.foody-toolbar .ratings-boxes .summary{
+    padding: 20px 0 15px;
+    font-size: 16px;
+    overflow: hidden;
+    border-bottom: #f6f6f6 1px solid;
+    text-align: center;
+}
+.foody-toolbar .ratings-boxes .ratings{
+    color: yellow;
+    clear: both;
+    text-align: center;
+    border-top: #f5f5f5 1px solid;
+}
+.foody-toolbar .ratings-boxes .ratings p{
+    font-size: 23px;
+}
+.ratings-boxes-review{
+    margin-top: 10px;
+    text-align: center;
+    overflow: hidden;
+    clear: both;
+}
+.ratings-boxes-review a{
+    padding: 10px 0;
+    font-size: 14px;
+    background: #049ec5;
+    border-radius: 2px;
+    color: #fff;
+    overflow: hidden;
+    display: block;
+}
+.vote-star{
+    color: yellow;
+}
+
+.res-active{
+    background: #28a745;
+    color: #fff !important;
+}
