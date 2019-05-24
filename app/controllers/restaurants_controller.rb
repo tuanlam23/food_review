@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:follow]
   before_action :check_user, only: [:follow]
   def index
-    @restaurants = Restaurant.order(created_at: :desc)
+    @restaurants = Restaurant.order(created_at: :desc).paginate(page: 1, per_page: 2)
   end
 
   def show
@@ -21,24 +21,23 @@ class RestaurantsController < ApplicationController
   end
 
   def load_new
-    page = params[:page].to_i + 1
-    restaurants = Restaurant.order(created_at: :desc).paginate(page: 1, per_page: 10)
+    restaurants = Restaurant.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
     strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
     content = strhtml.html_safe
-    render json: {content: content, last_page: (restaurants.total_entries / 10.0).ceil, next_page: params[:page].to_i + 1}
+    render json: {content: content, last_page: restaurants.total_pages,
+                  next_page: restaurants.current_page + 1}
   end
 
   def load_follow
     restaurant_ids = current_user.follows.pluck(:restaurant_id)
-    restaurants = Restaurant.where(id: restaurant_ids).paginate(page: 1, per_page: 10)
+    restaurants = Restaurant.where(id: restaurant_ids).paginate(page: params[:page], per_page: 2)
     if restaurants.present?
       strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
       content = strhtml.html_safe
-      render json: {content: content, last_page: (restaurants.total_entries / 10.0).ceil, next_page: params[:page].to_i + 1}
+      render json: {content: content, last_page: restaurants.total_pages,
+                    next_page: restaurants.current_page + 1}
     else
-      render json: {content: 'nguyen van nam'}
-
-
+      render json: {content: 'Chưa có dữ liệu', status: 274}
     end
   end
 

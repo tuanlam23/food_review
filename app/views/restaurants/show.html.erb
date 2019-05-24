@@ -11,11 +11,10 @@
         </div>
         <div class="res-rate row col-12">
           <p>
-            <i class="fa fa-star fa-2x"></i>
-            <i class="fa fa-star fa-2x"></i>
-            <i class="fa fa-star fa-2x"></i>
-            <i class="fa fa-star fa-2x"></i>
-            <i class="fa fa-star-o fa-2x"></i>
+            <% (1..5).each do |number| %>
+                <% star = @restaurant.number_star >= number ? 'fa-star' : 'fa-star-o'%>
+                <i class="fa fa-2x <%= star %>"></i>
+            <% end %>
           </p>
         </div>
         <div class="row col-12 res-address">
