@@ -473,67 +473,68 @@
         <div class="ym-clearbox" style="top: 0">
           <ul>
             <li><a href="#" class="current">Moi Nhat</a></li>
-            <li><a href="#">Da Luu</a></li>
+            <li><a id="load-follow" href="#" data-url="<%= load_follow_restaurants_path %>">Da Luu</a></li>
           </ul>
         </div>
       </div>
       <div class="col-sm-12 pt-2">
-        <div class="row">
-          <% @restaurants.each do |restaurant|%>
-              <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
-                <div class="featured-place-wrap">
-                  <a href="<%= restaurant_path(restaurant)%>">
-                    <img src="<%= restaurant.picture.url if restaurant.picture? %>" class="img-fluid img-product" alt="#">
-                    <div class="featured-title-box f-content">
-                      <a href="<%= restaurant_path(restaurant) %>" class="shop-title">
-                        <%= restaurant.name %>
-                      </a>
-                      <ul>
-                        <li>
-                          <p>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                          </p>
-                        </li>
-                        <li>
-                          <span class="icon-location-pin"></span>
-                          <p><%= restaurant.address + ", " + restaurant.area.district%></p>
-                        </li>
-                      </ul>
-                      <div class="items-review">
-                        <div class="avatar">
-                          <a href="#">
-                            <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
-                          </a>
-                        </div>
-                        <div class="users-content block-with-text">
-                          <a href="#" target="_blank"><b>Nam Nguyen</b></a>
-                          <a href="" target="_blank">
-                            TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
-                            Trân châu ở đây k giống như những chỗ khac đâu ạ.
-                            Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
-                          </a>
-                        </div>
+        <div class="row" id="list_res">
+            <% @restaurants.each do |restaurant|%>
+                <div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+                  <div class="featured-place-wrap">
+                    <a href="<%= restaurant_path(restaurant)%>">
+                      <img src="<%= restaurant.picture.url if restaurant.picture? %>" class="img-fluid img-product" alt="#">
+                      <div class="featured-title-box f-content">
+                        <a href="<%= restaurant_path(restaurant) %>" class="shop-title">
+                          <%= restaurant.name %>
+                        </a>
+                        <ul>
+                          <li>
+                            <p>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                            </p>
+                          </li>
+                          <li>
+                            <span class="icon-location-pin"></span>
+                            <p><%= restaurant.address + ", " + restaurant.area.district%></p>
+                          </li>
+                        </ul>
+                        <div class="items-review">
+                          <div class="avatar">
+                            <a href="#">
+                              <img class="img-profile rounded-circle img-profile" src="images/featured1.jpg">
+                            </a>
+                          </div>
+                          <div class="users-content block-with-text">
+                            <a href="#" target="_blank"><b>Nam Nguyen</b></a>
+                            <a href="" target="_blank">
+                              TigerSugar là hãng trà sữa đầu tiên làm mình mê mẩn đến như thế!
+                              Trân châu ở đây k giống như những chỗ khac đâu ạ.
+                              Mềm dẻo cực kì, kết hợp với sữa tươi thì đỉnh luôn ấy! Rate 10/10 ❤️❤️🤤
+                            </a>
+                          </div>
 
+                        </div>
+                        <div class="items-review">
+                          <span>3 Reviews</span>
+                          <% if current_user.present? %>
+                              <a href="#" class="follow <%= 'res-active' if Follow.check_follow(restaurant.id, current_user.id) %>" data-res="<%= restaurant.id %>" data-url="<%= follow_restaurants_path %>">
+                                <i class="fa fa-bookmark"></i>
+                                Lưu
+                              </a>
+                          <% end %>
+                        </div>
                       </div>
-                      <div class="items-review">
-                        <span>3 Reviews</span>
-                        <% if current_user.present? %>
-                          <a href="#" class="follow <%= 'res-active' if Follow.check_follow(restaurant.id, current_user.id) %>" data-res="<%= restaurant.id %>" data-url="<%= follow_restaurants_path %>">
-                            <i class="fa fa-bookmark"></i>
-                            Lưu
-                          </a>
-                        <% end %>
-                      </div>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
-              </div>
-
-          <% end %>
+            <% end %>
+        </div>
+        <div class="row">
           <div class="col-lg-12">
             <a href="#" class="btn-more load-page" data-page="1" data-url="<%= load_new_restaurants_url %>">
               Xem thêm...

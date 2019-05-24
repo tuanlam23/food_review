@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       post :follow
       get :load_new
+      get :load_follow
     end
   end
 

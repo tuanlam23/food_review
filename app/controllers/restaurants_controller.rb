@@ -22,8 +22,24 @@ class RestaurantsController < ApplicationController
 
   def load_new
     page = params[:page].to_i + 1
-    restaurants = Restaurant.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-    strhtml = render_to_string partial: '/questions/new_attachment', locals: { original_file: of, dropzone_id: params[:dropzone_id] }, formats: :html
+    restaurants = Restaurant.order(created_at: :desc).paginate(page: 1, per_page: 10)
+    strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
+    content = strhtml.html_safe
+    render json: {content: content, last_page: (restaurants.total_entries / 10.0).ceil, next_page: params[:page].to_i + 1}
+  end
+
+  def load_follow
+    restaurant_ids = current_user.follows.pluck(:restaurant_id)
+    restaurants = Restaurant.where(id: restaurant_ids).paginate(page: 1, per_page: 10)
+    if restaurants.present?
+      strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
+      content = strhtml.html_safe
+      render json: {content: content, last_page: (restaurants.total_entries / 10.0).ceil, next_page: params[:page].to_i + 1}
+    else
+      render json: {content: 'nguyen van nam'}
+
+
+    end
   end
 
   # private

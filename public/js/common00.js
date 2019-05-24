@@ -24,7 +24,10 @@ $(function () {
         });
 
     });
+
+
     $('body').on('click', '.load-page', function (event) {
+        event.preventDefault();
         var page = $(this).attr('data-page');
         var url = $(this).attr('data-url');
         $.ajax({
@@ -32,14 +35,36 @@ $(function () {
             type: "GET",
             dataType: 'json',
             success: function (res) {
-                if(res.status == true && res.data=='success')
-                {
-                    object.addClass('res-active');
-                }
-                if(res.status == true && res.data=='delete')
-                {
-                    object.removeClass('res-active');
-                }
+                $('#list_res').append(res.content);
+            },
+            error: function (res) {
+                console.log(res);
+            }
+        });
+    });
+
+
+    $('body').on('click', '.vote', function (event) {
+        var number_star = $(this).attr('id').split("_")[1];
+        for (var i = 1; i <= number_star; i++){
+            $('#star_' + i).removeClass('fa-star-o').addClass('fa-star');
+        }
+        for (var i = 5; i > number_star; i--){
+            $('#star_' + i).removeClass('fa-star').addClass('fa-star-o');
+        }
+
+    });
+
+
+    $('body').on('click', '#load-follow', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('data-url');
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: 'json',
+            success: function (res) {
+                $('#list_res').append(res.content);
             },
             error: function (res) {
                 console.log(res);
