@@ -222,12 +222,16 @@ img.img-food{
     padding: 15px 15px 0;
     margin: 0 0 8px;
 }
+.list-reviews{
+    min-height: 150px;
+    background: #ffffff;
+}
+.profile-u{
+    border-bottom: #f6f6f6 1px solid;
+    margin-bottom: 5px;}
 .answer .review-user{
     position: relative;
     padding: 0 0 5px;
-    border-bottom: #f6f6f6 1px solid;
-    margin-bottom: 5px;
-
 }
 .fd-clearbox{
     box-sizing: border-box;
@@ -358,8 +362,9 @@ a.ru-avatar img{
     outline: 0;
 }
 .fc-comment{
-    /*position: relative;*/
+    position: relative;
     background: #f9f9f9;
+    min-width: 100%;
 }
 .fc-comment .rv-items{
     padding: 15px;
@@ -400,7 +405,7 @@ a.ru-avatar img{
 .fdi-comm{
     position: relative;
     float: none;
-    margin: 20px;
+    /*margin: 10px;*/
 }
 .fdi-comm img{
     width: 32px;
@@ -490,4 +495,12 @@ a.ru-avatar img{
 .res-active{
     background: #28a745;
     color: #fff !important;
+}
+
+.descriptions{
+    max-height: 300px;
+}
+.descriptions img{
+    max-height: 300px;
+    width: 100%;
 }

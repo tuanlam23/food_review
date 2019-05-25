@@ -1,6 +1,6 @@
 <section class="light-bg booking-details_wrap">
   <div class="container">
-    <div class="row bg-white">
+    <div class="row bg-white descriptions">
       <div class="col-sm-5 p-0">
         <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" class="img-fluid" alt="#">
       </div>
@@ -59,111 +59,101 @@
   </div>
   <div class="container">
     <div class="row justify-content-center">
-      <% @restaurant.reviews.each do |review|%>
-        <div class="col-8 answer">
-        <div class="row pl-2">
-          <div class="review-user fd-clearbox">
-            <div class="re-avatar">
-              <a href="#" class="ru-avatar">
-                <img src="<%= review.user.image.url if review.user.image? %>"/>
-              </a>
-            </div>
-          </div>
-          <div class="user-prof">
-            <div class="re-rate">
-              <p>
-                <% (1..5).each do |number| %>
-                    <% star = review.evaluation.star.to_i >= number ? 'fa-star' : 'fa-star-o'%>
-                    <i class="fa <%= star %>"></i>
-                <% end %>
-              </p>
-            </div>
-            <div class="ru-row">
-              <a href="#" class="ru-name">
-                <%= review.user.name %>
-              </a>
-            </div>
-            <div class="ru-stats">
-              <span><%= review.created_at.strftime("%d/%m/%Y")%></span>
-            </div>
-          </div>
+      <div class="col-8 list-reviews">
+        <%if @reviews.blank? %>
+        <div class="col-12 mt-3" style="text-align: center">
+          <h6>Chưa có đánh giá nào</h6>
         </div>
-        <div class="re-des fd-clearbox">
-          <div class="re-detail-des">
-            <span>
-             <%= review.content %>
-            </span>
-          </div>
-        </div>
-        <% review.images.each do |file|%>
-          <div class="re-photo">
-            <div class="item-photo">
-              <img src="<%= file.picture.url if file.picture? %>" alt="">
-            </div>
-          </div>
         <% end %>
-        <div>
-          <div class="review-comment fd-clearbox">
-            <div class="fc-toolbar">
-              <div class="icon-comment">
-                <a href="#">
-                  <i class="fa fa-comment"></i>
-                  Thảo luận
-                </a>
+        <% @reviews.each do |review|%>
+          <div class="row answer">
+            <div class="col-12 pl-2 profile-u">
+              <div class="review-user fd-clearbox">
+                <div class="re-avatar">
+                  <a href="#" class="ru-avatar">
+                    <img src="<%= review.user.image.url if review.user.image? %>"/>
+                  </a>
+                </div>
+              </div>
+              <div class="user-prof">
+                <div class="re-rate">
+                  <p>
+                    <% (1..5).each do |number| %>
+                        <% star = review.evaluation.star.to_i >= number ? 'fa-star' : 'fa-star-o'%>
+                        <i class="fa <%= star %>"></i>
+                    <% end %>
+                  </p>
+                </div>
+                <div class="ru-row">
+                  <a href="#" class="ru-name">
+                    <%= review.user.name %>
+                  </a>
+                </div>
+                <div class="ru-stats">
+                  <span><%= review.created_at.strftime("%d/%m/%Y")%></span>
+                </div>
               </div>
             </div>
+            <div class="re-des fd-clearbox">
+              <div class="re-detail-des">
+              <span>
+               <%= review.content %>
+              </span>
+              </div>
+            </div>
+            <div class="col-12">
+              <% review.images.each do |file|%>
+                  <div class="re-photo">
+                    <div class="item-photo">
+                      <img src="<%= file.picture.url if file.picture? %>" alt="">
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+            <div class="col-12 pt-3">
+              <div class="review-comment fd-clearbox">
+                <% unless current_user %>
+                  <div class="fc-toolbar">
+                    <div class="icon-comment">
+                      <a href="#">
+                        <i class="fa fa-comment"></i>
+                        Thảo luận
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
 
-            <div class="fc-comment">
-              <div class="fdi-comm">
-                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-                <div class="fdi-comm-right">
-                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
-                  <span>fdhsjfh djfkdjf
-                  fdlfkldkfd
-                  fdlkfldkf lkfldkf dfkdlkfd fldflks fldkl;fkd fk;ldsk;f dsfk;sdl;fd f;lf'd fdls;fl ef</span>
-                </div>
-              </div>
-              <div class="fdi-comm">
-                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-                <div class="fdi-comm-right">
-                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
-                  <span>fdhsjfh djfkdjf
-                  fdlfkldkfd
-                  fdlkfldkf</span>
-                </div>
-              </div>
-              <div class="fdi-comm">
-                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-                <div class="fdi-comm-right">
-                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
-                  <span>fdhsjfh djfkdjf
-                  fdlfkldkfd
-                  fdlkfldkf</span>
-                </div>
-              </div>
-              <div class="fdi-comm">
-                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-                <div class="fdi-comm-right">
-                  <a href="#" class="fc-username"><b>Nam Nguyen</b></a>
-                  <span>fdhsjfh djfkdjf
-                  fdlfkldkfd
-                  fdlkfldkf</span>
-                </div>
-              </div>
-              <div class="rv-items">
-                <a href="#" class="form-cmm">
-                  <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-                </a>
-                <div class="fc-input">
-                  <%= text_area_tag 'comment' %>
+                <div class="fc-comment">
+                  <div id="comments_<%= review.id %>">
+                    <% review.comments.each do |comment| %>
+                        <div class="fdi-comm">
+                          <img src="<%= @restaurant.picture.url  %>" alt="">
+                          <div class="fdi-comm-right">
+                            <a href="#" class="fc-username"><b><%= comment.user.name %></b></a>
+                            <span><%= comment.content %></span>
+                          </div>
+                        </div>
+                        <hr>
+                    <% end %>
+                  </div>
+                  <% if current_user %>
+                    <div class="rv-items">
+                      <a href="#" class="form-cmm">
+                        <img src="<%= current_user.image.url if current_user.image? %>" alt="">
+                      </a>
+                      <div class="fc-input">
+                        <textarea class="form-control comment" rows="1"
+                                  data-review="<%= review.id %>" data-url="<%= comments_path %>"></textarea>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <% end %>
 
+        <% end %>
+      </div>
 
       <div class="stats col-4">
         <div class="foody-toolbar">
@@ -204,6 +194,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <%= form_for(@review, url: reviews_path, html: {method: 'post'}) do |f|%>
+          <%= hidden_field_tag :url, request.original_url %>
           <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
         <div class="modal-body">
             <div class="vote-star">

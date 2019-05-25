@@ -118,4 +118,32 @@ $(function () {
             }
         });
     });
+
+    $('body').on('keypress', '.comment', function (e) {
+        var object = $(this)
+        if(e.which === 13){
+            var content = $(this).val();
+            var review_id = $(this).attr('data-review');
+            var url = $(this).attr('data-url');
+            console.log(url);
+            if(content == ""){
+                alert('Nội dung thảo luận trống');
+            }else {
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    dataType: 'json',
+                    data: {review_id: review_id, content: content},
+                    success: function (res) {
+                       $("#comments_" + review_id).append(res.content);
+                       object.val("");
+                    },
+                    error: function (res) {
+                        console.log(res);
+                    }
+                });
+            }
+            return false;
+        }
+    });
 });
