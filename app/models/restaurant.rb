@@ -4,6 +4,7 @@ class Restaurant < ApplicationRecord
   has_many :foods
   has_many :follows
   has_many :evaluations
+  has_many :reviews
   mount_uploader :picture, PictureUploader
 
   def self.factory

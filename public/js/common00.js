@@ -60,6 +60,7 @@ $(function () {
         for (var i = 5; i > number_star; i--){
             $('#star_' + i).removeClass('fa-star').addClass('fa-star-o');
         }
+        $('#rate').val(number_star);
 
     });
 

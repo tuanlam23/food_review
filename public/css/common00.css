@@ -298,6 +298,7 @@ a.ru-avatar img{
 
 .re-des{
     position: relative;
+    float: none;
 }
 
 .re-detail-des{

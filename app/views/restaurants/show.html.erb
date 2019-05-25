@@ -32,7 +32,6 @@
       </div>
     </div>
   </div>
-
   <div class="container pt-3">
     <div class="row fd-list mb-4">
       <div class="col-sm-12 re-header p-2">
@@ -60,79 +59,49 @@
   </div>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-8 answer">
+      <% @restaurant.reviews.each do |review|%>
+        <div class="col-8 answer">
         <div class="row pl-2">
           <div class="review-user fd-clearbox">
             <div class="re-avatar">
               <a href="#" class="ru-avatar">
-                <img src="<%= @restaurant.picture.url if @restaurant.picture? %>"/>
+                <img src="<%= review.user.image.url if review.user.image? %>"/>
               </a>
             </div>
           </div>
           <div class="user-prof">
             <div class="re-rate">
               <p>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+                <% (1..5).each do |number| %>
+                    <% star = review.evaluation.star.to_i >= number ? 'fa-star' : 'fa-star-o'%>
+                    <i class="fa <%= star %>"></i>
+                <% end %>
               </p>
             </div>
             <div class="ru-row">
               <a href="#" class="ru-name">
-                Nguyen NAm VAn
+                <%= review.user.name %>
               </a>
             </div>
             <div class="ru-stats">
-              <span>21/5/2019 21:03</span>
+              <span><%= review.created_at.strftime("%d/%m/%Y")%></span>
             </div>
           </div>
         </div>
         <div class="re-des fd-clearbox">
           <div class="re-detail-des">
             <span>
-              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
-              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
-              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
-              Hôm mình đến mới khai trương nên xếp hàng dài cực dài luôn. Vị trí siêu trung tâm mà to bự, khả năng lúc nào cũng luôn đông thật sự
+             <%= review.content %>
             </span>
           </div>
         </div>
-        <div class="re-photo">
-          <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-
+        <% review.images.each do |file|%>
+          <div class="re-photo">
+            <div class="item-photo">
+              <img src="<%= file.picture.url if file.picture? %>" alt="">
+            </div>
           </div>
-
-        </div>
-        <div class="re-photo">
-          <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-
-          </div>
-
-        </div>
-        <div class="re-photo">
-          <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-
-          </div>
-
-        </div>
-        <div class="re-photo">
-          <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-
-          </div>
-
-        </div>
-        <div class="re-photo">
-          <div class="item-photo">
-            <img src="<%= @restaurant.picture.url if @restaurant.picture? %>" alt="">
-          </div>
-        </div>
-
+        <% end %>
         <div>
           <div class="review-comment fd-clearbox">
             <div class="fc-toolbar">
@@ -193,6 +162,9 @@
           </div>
         </div>
       </div>
+      <% end %>
+
+
       <div class="stats col-4">
         <div class="foody-toolbar">
           <div class="microsite-sumary-new" style="top: 0">
@@ -214,11 +186,8 @@
               <div class="ratings-boxes-review">
                 <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </div>
@@ -234,27 +203,34 @@
         <h6 class="modal-title">Bình luận</h6>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-
-      <div class="modal-body">
-        <form action="">
-          <div class="vote-star">
-            <p>
-              <% (1..5).each do |number| %>
-                <i id="star_<%= number %>" class="fa fa-star-o fa-2x vote"></i>
+      <%= form_for(@review, url: reviews_path, html: {method: 'post'}) do |f|%>
+          <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+        <div class="modal-body">
+            <div class="vote-star">
+              <p>
+                <% (1..5).each do |number| %>
+                  <i id="star_<%= number %>" class="fa fa-star-o fa-2x vote"></i>
+                <% end %>
+              </p>
+              <%= hidden_field_tag 'rate', '' %>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
+              <%= f.text_area :content,:required => true, rows: 6, class: "form-control"%>
+            </div>
+            <div class="form-group">
+              <%= f.fields_for :images do |p|%>
+                  <label for=""><b>Ảnh</b></label>
+                  <%= p.file_field :picture, multiple: true, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
               <% end %>
-            </p>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-          </div>
-        </form>
-      </div>
+            </div>
+        </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Đánh giá</button>
-      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <%= f.submit "Đánh giá", class: "btn btn-primary"%>
+        </div>
+      <% end %>
 
     </div>
   </div>
