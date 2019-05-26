@@ -11,15 +11,12 @@
           <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
             <div class="row">
               <div class="form-group col-md-2 form-search">
-                <select class="form-control">
-                  <option value="0" selected>Hà Nội</option>
-                  <option value="1">Hồ Chí Minh</option>
-                </select>
+                <%= select_tag 'city', options_for_select(@area_parent.pluck(:name, :id), session[:city]),{:class => 'form-control'}%>
               </div>
               <form class="form-horizontal col-md-8" role="form">
                 <div class="form-search">
                   <div class="input-group" id="adv-search">
-                    <input type="text" class="form-control" placeholder="Món ăn"/>
+                    <input type="text" name="keyword" class="form-control" value="<%= params[:keyword] %>" placeholder="Quán ăn, món ăn, loại hình..."/>
                     <div class="input-group-btn">
                       <div class="btn-group" role="group">
                         <div class="dropdown dropdown-lg">
@@ -31,69 +28,39 @@
 
                             <div class="sf-left">
                               <ul class="sf-cate">
-                                <li>
-                                  <i class="fa fa-location-arrow"></i>
-                                  <label>Khu vực</label>
-                                  <i class="fa fa-angle-right sf-i-right"></i>
+                                <li id="area-box" class="search-box-ca search-active">
+                                  <a href="#">
+                                    <i class="fa fa-location-arrow"></i>
+                                    <label>Khu vực</label>
+                                    <i class="fa fa-angle-right sf-i-right"></i>
+                                  </a>
                                 </li>
-                                <li>
-                                  <i class="fa fa-bars"></i>
-                                  <label>Phân loại</label>
-                                  <i class="fa fa-angle-right sf-i-right"></i>
+                                <li id="cate-box" class="search-box-ca">
+                                  <a href="#">
+                                    <i class="fa fa-bars"></i>
+                                    <label>Phân loại</label>
+                                    <i class="fa fa-angle-right sf-i-right"></i>
+                                  </a>
                                 </li>
                               </ul>
                             </div>
                             <div class="sf-right">
                               <div class="sf-result">
-                                <ul>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input name="nam" type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
-                                  <li>
-                                    <input name="nam" type="checkbox">
-                                    <label for="">Cầu Giấy</label>
-                                  </li>
+                                <ul id="district">
+                                  <% @districts.each do |district| %>
+                                    <li>
+                                      <%= check_box_tag("district[]", district.id, params[:district].present? ? params[:district].include?(district.id.to_s) : false) %>
+                                      <label for=""><%= district.name %></label>
+                                    </li>
+                                  <% end %>
+                                </ul>
+                                <ul id="category" style="display: none">
+                                  <% @categories.each do |cate|%>
+                                      <li>
+                                        <%= check_box_tag("categories[]", cate.id, params[:categories].present? ? params[:categories].include?(cate.id.to_s) : false) %>
+                                        <label for=""><%= cate.name %></label>
+                                      </li>
+                                  <% end %>
                                 </ul>
                               </div>
                             </div>

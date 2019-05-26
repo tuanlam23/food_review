@@ -1,8 +1,9 @@
 class RestaurantsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:follow]
   before_action :check_user, only: [:follow]
+  before_action :set_city_filter, only: [:show, :index]
   def index
-    @restaurants = Restaurant.order(created_at: :desc).paginate(page: 1, per_page: 2)
+    @restaurants = Restaurant.where(area_id: @districts.pluck(:id)).order(created_at: :desc).paginate(page: 1, per_page: 2)
   end
 
   def show
@@ -41,6 +42,17 @@ class RestaurantsController < ApplicationController
     else
       render json: {content: 'Chưa có dữ liệu', status: 274}
     end
+  end
+
+  def set_city_filter
+    @area_parent = Area.where(parent_id: nil)
+    if params[:city].present?
+      session[:city] = params[:city]
+    elsif session[:city].blank?
+      session[:city] = @area_parent.first.id
+    end
+    @districts = Area.where(parent_id: session[:city])
+    @categories = Category.all
   end
 
   # private

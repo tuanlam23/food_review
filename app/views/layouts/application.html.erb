@@ -38,8 +38,9 @@
   </head>
 
   <body>
-
-    <%= render '/layouts/header' %>
+    <% if params[:controller] == "restaurants" && ["index", "show", "search"].include?(params[:action])%>
+      <%= render '/layouts/header' %>
+    <% end %>
     <%= yield %>
     <%= render '/layouts/footer' %>
 

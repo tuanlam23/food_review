@@ -146,4 +146,29 @@ $(function () {
             return false;
         }
     });
+
+    $('body').on('click', '#area-box a', function (e) {
+        e.preventDefault();
+        $("#district").show();
+        $("#area-box").addClass('search-active');
+        $("#cate-box").removeClass("search-active");
+        $("#category").hide();
+    });
+    $('body').on('click', '#cate-box a', function (e) {
+        e.preventDefault();
+        $("#district").hide();
+        $("#area-box").removeClass('search-active');
+        $("#cate-box").addClass("search-active");
+        $("#category").show();
+    });
+
+    $('body').on("click", ".dropdown-menu", function (e) {
+       e.stopPropagation();
+    });
+
+    $('body').on("change", "#city", function () {
+       var city = $(this).children("option:selected").val();
+       window.location = "/?city=" + city;
+    });
+
 });

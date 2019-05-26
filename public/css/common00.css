@@ -362,7 +362,7 @@ a.ru-avatar img{
     outline: 0;
 }
 .fc-comment{
-    position: relative;
+    /*position: relative;*/
     background: #f9f9f9;
     min-width: 100%;
 }
@@ -503,4 +503,13 @@ a.ru-avatar img{
 .descriptions img{
     max-height: 300px;
     width: 100%;
+}
+
+.search-box-ca a{
+    text-decoration: none;
+    color: #0b0b0b;
+}
+.search-active {
+    background-color: #f6f6;
+
 }
