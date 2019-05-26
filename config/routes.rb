@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post :follow
       get :load_new
       get :load_follow
+      get :search
     end
   end
 

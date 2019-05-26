@@ -13,7 +13,7 @@
               <div class="form-group col-md-2 form-search">
                 <%= select_tag 'city', options_for_select(@area_parent.pluck(:name, :id), session[:city]),{:class => 'form-control'}%>
               </div>
-              <form class="form-horizontal col-md-8" role="form">
+              <form action="<%= search_restaurants_path%>" class="form-horizontal col-md-8" role="form">
                 <div class="form-search">
                   <div class="input-group" id="adv-search">
                     <input type="text" name="keyword" class="form-control" value="<%= params[:keyword] %>" placeholder="Quán ăn, món ăn, loại hình..."/>
@@ -25,7 +25,6 @@
                           class="caret"></span></button>
                           <div class="dropdown-menu dropdown-menu-right dropdown-search"
                                role="menu">
-
                             <div class="sf-left">
                               <ul class="sf-cate">
                                 <li id="area-box" class="search-box-ca search-active">

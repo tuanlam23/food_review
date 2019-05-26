@@ -220,11 +220,10 @@ img.img-food{
     background: #ffffff;
     position: relative;
     padding: 15px 15px 0;
-    margin: 0 0 8px;
+    margin: 20px 0 8px;
 }
 .list-reviews{
     min-height: 150px;
-    background: #ffffff;
 }
 .profile-u{
     border-bottom: #f6f6f6 1px solid;

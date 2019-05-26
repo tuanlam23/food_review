@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:follow]
   before_action :check_user, only: [:follow]
-  before_action :set_city_filter, only: [:show, :index]
+  before_action :set_city_filter, only: [:show, :index, :search]
   def index
     @restaurants = Restaurant.where(area_id: @districts.pluck(:id)).order(created_at: :desc).paginate(page: 1, per_page: 2)
   end
@@ -10,6 +10,13 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
     @review = Review.new
+  end
+
+  def search
+    if params[:district].blank?
+      params[:district] = Area.where(parent_id: session[:city]).pluck(:id)
+    end
+    @restaurants = Restaurant.search_by(params)
   end
 
   def follow
