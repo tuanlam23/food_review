@@ -6,6 +6,7 @@ class Restaurant < ApplicationRecord
   has_many :evaluations
   has_many :reviews
   has_many :restaurants, through: :follows
+  after_save :reindex
   mount_uploader :picture, PictureUploader
   searchkick language: "vietnamese", merge_mappings: true,
    settings:{

@@ -5,9 +5,11 @@ class ReviewsController < ApplicationController
     restaurant = Restaurant.find(params[:review][:restaurant_id])
     ActiveRecord::Base.transaction do
       @review.save
-      params[:review][:images][:picture].each do |image|
-        @image = Image.create(review_id: @review.id, picture: image)
-        @image.save
+      if params[:review][:images].present?
+        params[:review][:images][:picture].each do |image|
+          @image = Image.create(review_id: @review.id, picture: image)
+          @image.save
+        end
       end
       Evaluation.create(review_id: @review.id, restaurant_id: params[:review][:restaurant_id], star: params[:rate])
       restaurant.update(number_star: restaurant.evaluations.average(:star).to_i)

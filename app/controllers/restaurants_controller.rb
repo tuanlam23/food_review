@@ -4,11 +4,11 @@ class RestaurantsController < ApplicationController
   before_action :set_city_filter, only: [:show, :index, :search]
   def index
     if current_user.present?
-      @recommend_res = current_user.recommend_restaurants
+      @recommend_res = current_user.recommend_restaurants.map(&:first)[0..7]
     else
       @recommend_res = Restaurant.order(number_star: :desc).limit(8)
     end
-    @restaurants = Restaurant.where(area_id: @districts.pluck(:id)).order(created_at: :desc).paginate(page: 1, per_page: 2)
+    @restaurants = Restaurant.where(area_id: @districts.pluck(:id)).order(created_at: :desc).paginate(page: 1, per_page: 8)
   end
 
   def show
@@ -36,7 +36,7 @@ class RestaurantsController < ApplicationController
   end
 
   def load_new
-    restaurants = Restaurant.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
+    restaurants = Restaurant.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
     strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
     content = strhtml.html_safe
     render json: {content: content, last_page: restaurants.total_pages,
@@ -45,7 +45,7 @@ class RestaurantsController < ApplicationController
 
   def load_follow
     restaurant_ids = current_user.follows.pluck(:restaurant_id)
-    restaurants = Restaurant.where(id: restaurant_ids).paginate(page: params[:page], per_page: 2)
+    restaurants = Restaurant.where(id: restaurant_ids).paginate(page: params[:page], per_page: 8)
     if restaurants.present?
       strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
       content = strhtml.html_safe

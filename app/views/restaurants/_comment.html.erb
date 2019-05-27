@@ -1,5 +1,5 @@
 <div class="fdi-comm">
-  <img src="<%= comment.user.image.url if comment.user.image? %>" alt="">
+  <img src="<%= comment.user.image? ? comment.user.image.url : 'img/user.png' %>" alt="">
   <div class="fdi-comm-right">
     <a href="#" class="fc-username"><b><%= comment.user.name %></b></a>
     <span><%= comment.content %></span>

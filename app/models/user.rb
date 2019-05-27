@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  include Recommendation
+  # include Recommendation
 
   def self.new_with_session params, session
     super.tap do |user|
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def recommend_restaurants
-    other_users = Restaurant.where.not(id: self.id)
+    other_users = User.where.not(id: self.id)
     recommended = Hash.new(0)
     other_users.each do |user|
       common_restaurants = user.restaurants & self.restaurants

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  resources :users
+
 
   namespace :admin do
     root 'admin#index'

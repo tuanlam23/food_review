@@ -71,7 +71,7 @@
               <div class="review-user fd-clearbox">
                 <div class="re-avatar">
                   <a href="#" class="ru-avatar">
-                    <img src="<%= review.user.image.url if review.user.image? %>"/>
+                    <img src="<%=review.user.image? ? review.user.image.url : '/img/user.png' %>"/>
                   </a>
                 </div>
               </div>
@@ -115,7 +115,7 @@
                 <% unless current_user %>
                   <div class="fc-toolbar">
                     <div class="icon-comment">
-                      <a href="#">
+                      <a href="<%= new_user_session_path %>">
                         <i class="fa fa-comment"></i>
                         Thảo luận
                       </a>
@@ -139,7 +139,7 @@
                   <% if current_user %>
                     <div class="rv-items">
                       <a href="#" class="form-cmm">
-                        <img src="<%= current_user.image.url if current_user.image? %>" alt="">
+                        <img src="<%= current_user.image? ? current_user.image.url : '/img/user.png' %>" alt="">
                       </a>
                       <div class="fc-input">
                         <textarea class="form-control comment" rows="1"
@@ -172,7 +172,11 @@
                 </div>
               </div>
               <div class="ratings-boxes-review">
-                <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
+                <% if current_user %>
+                  <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
+                <% else %>
+                    <a href="<%= new_user_session_path%>" >Viết bình luận</a>
+                <% end %>
               </div>
             </div>
           </div>
@@ -194,11 +198,9 @@
           <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
         <div class="modal-body">
             <div class="vote-star">
-              <p>
-                <% (1..5).each do |number| %>
-                  <i id="star_<%= number %>" class="fa fa-star-o fa-2x vote"></i>
-                <% end %>
-              </p>
+              <% (1..5).each do |number| %>
+                <i id="star_<%= number %>" class="vote fa fa-star-o fa-2x"></i>
+              <% end %>
               <%= hidden_field_tag 'rate', '' %>
             </div>
             <div class="form-group">
