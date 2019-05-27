@@ -154,22 +154,20 @@
 
         <% end %>
       </div>
-
       <div class="stats col-4">
         <div class="foody-toolbar">
           <div class="microsite-sumary-new" style="top: 0">
             <div class="microsite-box-rating-new">
               <div class="ratings-boxes">
                 <div class="summary">
-                  <b>16</b> bình luận
+                  <b><%= @restaurant.reviews.size %></b> bình luận
                 </div>
                 <div class="ratings">
                   <p>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
+                    <% (1..5).each do |number| %>
+                        <% star = @restaurant.number_star >= number ? 'fa-star' : 'fa-star-o'%>
+                        <i class="fa <%= star %>"></i>
+                    <% end %>
                   </p>
                 </div>
               </div>
@@ -183,11 +181,9 @@
     </div>
   </div>
 </section>
-
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-
       <!-- Modal Header -->
       <div class="modal-header">
         <h6 class="modal-title">Bình luận</h6>
@@ -216,13 +212,11 @@
               <% end %>
             </div>
         </div>
-
         <!-- Modal footer -->
         <div class="modal-footer">
           <%= f.submit "Đánh giá", class: "btn btn-primary"%>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>

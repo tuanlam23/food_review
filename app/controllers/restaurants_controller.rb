@@ -3,6 +3,11 @@ class RestaurantsController < ApplicationController
   before_action :check_user, only: [:follow]
   before_action :set_city_filter, only: [:show, :index, :search]
   def index
+    if current_user.present?
+      @recommend_res = current_user.recommend_restaurants
+    else
+      @recommend_res = Restaurant.order(number_star: :desc).limit(8)
+    end
     @restaurants = Restaurant.where(area_id: @districts.pluck(:id)).order(created_at: :desc).paginate(page: 1, per_page: 2)
   end
 

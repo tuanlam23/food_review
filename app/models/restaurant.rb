@@ -5,20 +5,32 @@ class Restaurant < ApplicationRecord
   has_many :follows
   has_many :evaluations
   has_many :reviews
+  has_many :restaurants, through: :follows
   mount_uploader :picture, PictureUploader
-  searchkick mappings: {
+  searchkick language: "vietnamese", merge_mappings: true,
+   settings:{
+       analysis: {
+           analyzer:{
+               vi_analyzer:{
+                   type:"custom",
+                   tokenizer:"standard",
+                   filter: ["lowercase"]
+               }
+           }
+       }
+   },
+   mappings: {
       restaurant: {
         properties: {
-            name: {type: "keyword"},
+            name: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
             restaurant_id: {type: "integer"},
-            description: {type: "keyword"},
             category_id: {type: "integer"},
-            category_name: {type: "keyword"},
+            category_name: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
             area_id: {type: "integer"},
-            address: {type: "keyword"},
+            address: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
             number_star: {type: "integer"},
             created_at: {type: "date"},
-            food: {type: "keyword"}
+            food: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}}
         }
       }
   }
@@ -27,7 +39,6 @@ class Restaurant < ApplicationRecord
     {
         restaurant_id: id,
         name: name,
-        description: description,
         category_id: category_id,
         category_name: category.name,
         area_id: area_id,
@@ -53,7 +64,8 @@ class Restaurant < ApplicationRecord
               {
                   query: params[:keyword],
                   operator: "or",
-                  fields: ["name^12", "food^10", "address^8", "category_name^6", "description^4"]
+                  analyzer: 'vi_analyzer',
+                  fields: ["name^10", "food^8", "address^6", "category_name^4"]
               }
       }
     end
