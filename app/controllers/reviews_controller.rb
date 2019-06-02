@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @review = Review.new reviews_params
@@ -16,6 +17,11 @@ class ReviewsController < ApplicationController
     end
 
     redirect_to params[:url]
+  end
+
+  def destroy
+    Review.find(params[:id]).destroy
+    render json: {status: true, status: 200}
   end
 
   def reviews_params

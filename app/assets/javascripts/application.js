@@ -79,7 +79,6 @@ $(document).on("turbolinks:load", function () {
 
     });
 
-
     $('body').on('click', '#load-follow', function (e) {
         e.preventDefault();
         var url = $(this).attr('data-url');
@@ -183,6 +182,58 @@ $(document).on("turbolinks:load", function () {
     $('body').on("change", "#city", function () {
         var city = $(this).children("option:selected").val();
         window.location = "/?city=" + city;
+    });
+
+    $('body').on("click", "a.remove-comment-btn", function (e) {
+        e.preventDefault();
+        var status = confirm("Bạn chắc chắn muốn xóa?");
+        if(status){
+            var comment_id = $(this).attr("data-id");
+            var url = $(this).attr("href");
+            $.ajax({
+                url: url,
+                type: "DELETE",
+                dataType: 'json',
+                success: function (res) {
+                    $("#comment_" + comment_id).next().remove();
+                    $("#comment_" + comment_id).remove();
+                },
+                error: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+    });
+
+    $('body').on('click', ".review-destroy", function (e) {
+        e.preventDefault();
+        var status = confirm("Bạn chắc chắn muốn xóa?");
+        if(status){
+            var id = $(this).attr("data-id");
+            var url = $(this).attr("data-url");
+            $.ajax({
+                url: url,
+                type: "DELETE",
+                dataType: 'json',
+                success: function (res) {
+                    $("#review_" + id).remove();
+                },
+                error: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+    });
+
+    $('body').on('click', '.form-icon', function (e) {
+        e.preventDefault();
+        var image_id = $(this).attr("data-img");
+        if(image_id != "undefined")
+        {
+            var images_edit = $("#images_edit").val();
+            $("#images_edit").val(images_edit + " " + image_id);
+            $("#image_" + image_id).remove();
+        }
     });
 
 });

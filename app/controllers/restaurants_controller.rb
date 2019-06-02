@@ -15,6 +15,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
     @review = Review.new
+    @review_user = @restaurant.reviews.find_by(user_id: current_user.id) if current_user
   end
 
   def search

@@ -299,6 +299,19 @@ a.ru-avatar img{
     font-size: 20px;
 }
 
+.review-change{
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    overflow: hidden;
+    color: #ccc;
+}
+
+.review-change a{
+    color: #ccc;
+    text-decoration: none;
+    padding-right: 10px;
+}
 .re-des{
     position: relative;
     float: none;
@@ -511,4 +524,46 @@ a.ru-avatar img{
 .search-active {
     background-color: #f6f6;
 
+}
+
+a.remove-comment-btn{
+    float: right;
+    color: #ccc !important;
+    font-size: 15px;
+}
+
+.form-img{
+    position: relative;
+}
+.form-image{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.form-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: lightblue;
+}
+.form-img:hover .form-overlay {
+    opacity: 1;
+}
+
+.form-icon {
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
 }

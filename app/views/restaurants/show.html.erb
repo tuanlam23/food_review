@@ -66,7 +66,7 @@
         </div>
         <% end %>
         <% @reviews.each do |review|%>
-          <div class="row answer">
+          <div id="review_<%= review.id %>" class="row answer">
             <div class="col-12 pl-2 profile-u">
               <div class="review-user fd-clearbox">
                 <div class="re-avatar">
@@ -92,6 +92,12 @@
                 <div class="ru-stats">
                   <span><%= review.created_at.strftime("%d/%m/%Y")%></span>
                 </div>
+                <% if current_user.id == review.user_id %>
+                  <div class="review-change">
+                    <span class="review-destroy" data-id="<%= review.id %>" data-url="<%= review_path(review) %>" style="float: right"><i class="fa fa-times"></i></span>
+                    <a href="#" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></a>
+                  </div>
+                <% end %>
               </div>
             </div>
             <div class="re-des fd-clearbox">
@@ -126,11 +132,16 @@
                 <div class="fc-comment">
                   <div id="comments_<%= review.id %>">
                     <% review.comments.each do |comment| %>
-                        <div class="fdi-comm">
-                          <img src="<%= @restaurant.picture.url  %>" alt="">
+                        <div class="fdi-comm" id="comment_<%= comment.id %>">
+                          <img src="<%= comment.user.image? ? comment.user.image.url : '/img/user.png' %>" alt="">
                           <div class="fdi-comm-right">
                             <a href="#" class="fc-username"><b><%= comment.user.name %></b></a>
                             <span><%= comment.content %></span>
+                            <% if current_user == comment.user %>
+                              <a class="remove-comment-btn" href="<%= comment_path(comment.id)%>" data-id="<%= comment.id %>">
+                                <span class="fa fa-times"></span>
+                              </a>
+                            <% end %>
                           </div>
                         </div>
                         <hr>
@@ -171,11 +182,12 @@
                   </p>
                 </div>
               </div>
+
               <div class="ratings-boxes-review">
-                <% if current_user %>
-                  <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
-                <% else %>
+                <% if current_user.blank? %>
                     <a href="<%= new_user_session_path%>" >Viết bình luận</a>
+                <% elsif current_user && current_user.reviews.where(restaurant_id: @restaurant.id).blank? %>
+                    <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
                 <% end %>
               </div>
             </div>
@@ -185,40 +197,97 @@
     </div>
   </div>
 </section>
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h6 class="modal-title">Bình luận</h6>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+<% if @review_user %>
+    <div class="modal" id="editModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h6 class="modal-title">Bình luận</h6>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <%= form_for(@review_user, url: review_path(@review_user), html: {method: 'post'}) do |f|%>
+              <%= hidden_field_tag :url, request.original_url %>
+              <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+              <%= hidden_field_tag :images_edit, ""%>
+              <div class="modal-body">
+                <div class="vote-star">
+                  <% numb_star = @review_user.evaluation.star %>
+                  <% (1..5).each do |number| %>
+                      <% star = numb_star >= number ? "fa-star" : "fa-star-o"%>
+                      <i id="star_<%= number %>" class="vote fa fa-2x <%= star %>"></i>
+                  <% end %>
+                  <%= hidden_field_tag 'rate', '' %>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
+                  <%= f.text_area :content,:required => true, rows: 6, class: "form-control"%>
+                </div>
+                <div class="form-group">
+                  <%= f.fields_for :images do |p|%>
+                      <label for=""><b>Ảnh</b></label>
+                      <%= p.file_field :picture, multiple: true, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+                  <% end %>
+                </div>
+                <div class="container-fluid">
+                  <div class="row">
+                    <% @review_user.images.each do |image|%>
+                      <div class="col-3 form-img" id="image_<%= image.id %>">
+                        <img src="<%= image.picture.url if image.picture? %>" class="form-image" alt="#">
+                        <div class="form-overlay">
+                          <a href="#" class="form-icon" data-img="<%= image.id %>">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <%= f.submit "Đánh giá", class: "btn btn-primary"%>
+              </div>
+          <% end %>
+        </div>
       </div>
-      <%= form_for(@review, url: reviews_path, html: {method: 'post'}) do |f|%>
-          <%= hidden_field_tag :url, request.original_url %>
-          <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
-        <div class="modal-body">
-            <div class="vote-star">
-              <% (1..5).each do |number| %>
-                <i id="star_<%= number %>" class="vote fa fa-star-o fa-2x"></i>
-              <% end %>
-              <%= hidden_field_tag 'rate', '' %>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
-              <%= f.text_area :content,:required => true, rows: 6, class: "form-control"%>
-            </div>
-            <div class="form-group">
-              <%= f.fields_for :images do |p|%>
-                  <label for=""><b>Ảnh</b></label>
-                  <%= p.file_field :picture, multiple: true, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
-              <% end %>
-            </div>
+    </div>
+<% else %>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h6 class="modal-title">Bình luận</h6>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <%= f.submit "Đánh giá", class: "btn btn-primary"%>
-        </div>
-      <% end %>
+        <%= form_for(@review, url: reviews_path, html: {method: 'post'}) do |f|%>
+            <%= hidden_field_tag :url, request.original_url %>
+            <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+            <div class="modal-body">
+              <div class="vote-star">
+                <% (1..5).each do |number| %>
+                    <i id="star_<%= number %>" class="vote fa fa-star-o fa-2x"></i>
+                <% end %>
+                <%= hidden_field_tag 'rate', '' %>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
+                <%= f.text_area :content,:required => true, rows: 6, class: "form-control"%>
+              </div>
+              <div class="form-group">
+                <%= f.fields_for :images do |p|%>
+                    <label for=""><b>Ảnh</b></label>
+                    <%= p.file_field :picture, multiple: true, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+                <% end %>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <%= f.submit "Đánh giá", class: "btn btn-primary"%>
+            </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

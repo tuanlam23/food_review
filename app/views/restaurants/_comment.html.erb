@@ -1,8 +1,11 @@
-<div class="fdi-comm">
-  <img src="<%= comment.user.image? ? comment.user.image.url : 'img/user.png' %>" alt="">
+<div class="fdi-comm" id="comment_<%=comment.id%>">
+  <img src="<%= comment.user.image? ? comment.user.image.url : '/img/user.png' %>" alt="">
   <div class="fdi-comm-right">
     <a href="#" class="fc-username"><b><%= comment.user.name %></b></a>
     <span><%= comment.content %></span>
+    <a class="remove-comment-btn" href="<%= comment_path(comment.id)%>" data-id="<%= comment.id %>">
+      <span class="fa fa-times"></span>
+    </a>
   </div>
 </div>
 <hr>
