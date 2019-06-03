@@ -567,3 +567,147 @@ a.remove-comment-btn{
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.mp-user-info {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+.mp-user-info .u-avatar {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    float: left;
+}
+
+.mp-user-info .u-avatar>img {
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.mp-user-info .u-name {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px;
+    line-height: 22px;
+    float: left;
+    width: 225px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.mp-user-info>ul>li{
+    display: block;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    list-style: none;
+    padding: 5px 0;
+}
+.mp-user-info>ul>li>a{
+    cursor: pointer;
+    position: relative;
+    color: #0c5460;
+    line-height: 1.5;
+}
+.mp-user-info>ul>li.active>a{
+    color: #1b1e21;
+    text-decoration: none;
+    outline: 0;
+    font-weight: bold;
+}
+
+.res-name-row a {
+    color: #00a8ff;
+    float: left;
+    font-weight: 700;
+}
+.user-follow-list{
+    min-height: 300px;
+}
+
+
+
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fbfbfb;
+    border: 1px solid #ddd;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usermenu {
+    margin-top: 30px;
+    min-height: 190px;
+}
+
+.profile-userpic{
+    text-align: center;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 126px;
+    height: 126px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+
+.profile-usermenu ul li {
+    border-bottom: 1px solid #e7ecef;
+}
+
+.profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    background-color: #e3eaef;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+}
+
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+}
+.user-nav{
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.user-nav > li {
+    position: relative;
+    display: block;
+}
+
+.user-nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}

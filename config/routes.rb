@@ -24,7 +24,12 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :users
+  resources :users do
+    get :follow
+    collection do
+      get :profile
+    end
+  end
 
 
   namespace :admin do

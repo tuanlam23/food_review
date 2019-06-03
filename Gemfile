@@ -38,7 +38,7 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem "carrierwave"
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'searchkick'

@@ -1,0 +1,47 @@
+<div class="stats col-4">
+  <div class="foody-toolbar">
+    <div class="microsite-sumary-new" style="top: 0">
+      <div class="microsite-box-rating-new">
+        <div class="ratings-boxes">
+          <div class="mp-user-info">
+            <div class="u-avatar">
+              <% if @user.provider == "facebook"%>
+                  <img class="img-profile rounded-circle img-profile" src="<%= @user.image? ? @user.image : '/img/user.png' %>">
+              <% else %>
+                  <img class="img-profile rounded-circle img-profile" src="<%= @user.image? ? @user.image.url : '/img/user.png' %>">
+              <% end %>
+            </div>
+            <div class="u-name">
+              <%= @user.name %>
+            </div>
+          </div>
+          <div class="mp-user-info">
+            <ul>
+              <li class="<%= "active" if @reviews%>">
+                <a href="<%= user_path(@user)%>">
+                  <i class="fa fa-comment"></i>
+                  <label>Hoạt động cá nhân</label>
+                </a>
+              </li>
+              <li class="<%= "active" if @restaurants %>">
+                <a href="<%= user_follow_path(@user)%>">
+                  <i class="fa fa-save"></i>
+                  <label>Lưu trữ</label>
+                </a>
+              </li>
+
+              <% if current_user.present? && current_user == @user%>
+                <li class="<%= "active" if @user_profile %>">
+                  <a href="<%= profile_users_path%>">
+                    <i class="fa fa-user"></i>
+                    <label>Thông tin cá nhân</label>
+                  </a>
+                </li>
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

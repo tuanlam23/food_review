@@ -1,6 +1,7 @@
 <section class="light-bg booking-details_wrap">
   <div class="container">
     <div class="row justify-content-center">
+      <%= render "users/user_left" %>
       <div class="col-8 list-reviews">
         <%if @reviews.blank? %>
             <div class="col-12 mt-3" style="text-align: center">
@@ -8,7 +9,7 @@
             </div>
         <% end %>
         <% @reviews.each do |review|%>
-            <div class="row answer">
+            <div class="row answer" id="review_<%= review.id %>">
               <div class="col-12 pl-2 profile-u">
                 <div class="review-user fd-clearbox">
                   <div class="re-avatar">
@@ -31,9 +32,18 @@
                       <%= review.user.name %>
                     </a>
                   </div>
+                  <div class="res-name-row">
+                    <a href="<%= restaurant_path(review.restaurant)%>"><%= review.restaurant.name%></a>
+                  </div>
                   <div class="ru-stats">
                     <span><%= review.created_at.strftime("%d/%m/%Y")%></span>
                   </div>
+                  <% if current_user.present? && current_user.id == review.user_id %>
+                      <div class="review-change">
+                        <span class="review-destroy" data-id="<%= review.id %>" data-url="<%= review_path(review) %>" style="float: right"><i class="fa fa-times"></i></span>
+                        <a href="#" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></a>
+                      </div>
+                  <% end %>
                 </div>
               </div>
               <div class="re-des fd-clearbox">
@@ -68,11 +78,16 @@
                   <div class="fc-comment">
                     <div id="comments_<%= review.id %>">
                       <% review.comments.each do |comment| %>
-                          <div class="fdi-comm">
+                          <div class="fdi-comm" id="comment_<%= comment.id %>">
                             <img src="<%= comment.user.image? ? comment.user.image.url : '/img/user.png' %>" alt="">
                             <div class="fdi-comm-right">
                               <a href="#" class="fc-username"><b><%= comment.user.name %></b></a>
                               <span><%= comment.content %></span>
+                              <% if current_user == comment.user %>
+                                  <a class="remove-comment-btn" href="<%= comment_path(comment.id)%>" data-id="<%= comment.id %>">
+                                    <span class="fa fa-times"></span>
+                                  </a>
+                              <% end %>
                             </div>
                           </div>
                           <hr>
@@ -95,34 +110,8 @@
             </div>
 
         <% end %>
-      </div>
-      <div class="stats col-4">
-        <div class="foody-toolbar">
-          <div class="microsite-sumary-new" style="top: 0">
-            <div class="microsite-box-rating-new">
-              <div class="ratings-boxes">
-                <div class="summary">
-                  <b>15</b> bình luận
-                </div>
-                <div class="ratings">
-                  <p>
-                    <% (1..5).each do |number| %>
-                        <i class="fa fa-star"></i>
-                    <% end %>
-                  </p>
-
-
-                </div>
-              </div>
-              <div class="ratings-boxes-review">
-                <% if current_user %>
-                    <a href="#" data-toggle="modal" data-target="#myModal">Viết bình luận</a>
-                <% else %>
-                    <a href="<%= new_user_session_path%>" >Viết bình luận</a>
-                <% end %>
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-12">
+          <%= will_paginate @reviews, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
         </div>
       </div>
     </div>
