@@ -225,7 +225,7 @@ $(document).on("turbolinks:load", function () {
         }
     });
 
-    $('body').on('click', '.form-icon', function (e) {
+    $('body').on('click', '.delete-img', function (e) {
         e.preventDefault();
         var image_id = $(this).attr("data-img");
         if(image_id != "undefined")
@@ -233,6 +233,31 @@ $(document).on("turbolinks:load", function () {
             var images_edit = $("#images_edit").val();
             $("#images_edit").val(images_edit + " " + image_id);
             $("#image_" + image_id).remove();
+        }
+    });
+
+    $('body').on('click', '.img-input', function (e) {
+        e.preventDefault();
+        var id = $(this).attr("data-num");
+        if(id != "undefined")
+        {
+            var images_add = $("#images_add").val();
+            $("#images_add").val(images_add + " " + id);
+            $("#" + id + "_img").remove();
+        }
+    });
+
+
+
+    $('body').on('change', '#review_images_picture', function(e) {
+        var files = e.target.files;
+        $("#images_add").val("");
+        $(".picture-form").remove();
+        for(var i = 0; i < files.length; i++){
+            console.log(files[i].name)
+            var html = "<div class='col-3 form-img picture-form' id='" + i + "_img'>" + "<img src=\"" + URL.createObjectURL(files[i]) + "\" class='form-image'>" +
+                "<div class='form-overlay'>" + "<a href='#' class='form-icon img-input' data-num='"+ i + "' data-img=\""  + files[i].name + "\"><i class='fa fa-times'></i></a></div></div>"
+            $("#list-img").append(html);
         }
     });
 

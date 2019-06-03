@@ -203,13 +203,14 @@
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <h6 class="modal-title">Bình luận</h6>
+            <h6 class="modal-title">Sửa Đánh Giá</h6>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <%= form_for(@review_user, url: review_path(@review_user), html: {method: 'post'}) do |f|%>
+          <%= form_for(@review_user, url: review_path(@review_user), html: {method: 'put'}) do |f|%>
               <%= hidden_field_tag :url, request.original_url %>
               <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
               <%= hidden_field_tag :images_edit, ""%>
+              <%= hidden_field_tag :images_add, ""%>
               <div class="modal-body">
                 <div class="vote-star">
                   <% numb_star = @review_user.evaluation.star %>
@@ -217,7 +218,7 @@
                       <% star = numb_star >= number ? "fa-star" : "fa-star-o"%>
                       <i id="star_<%= number %>" class="vote fa fa-2x <%= star %>"></i>
                   <% end %>
-                  <%= hidden_field_tag 'rate', '' %>
+                  <%= hidden_field_tag 'rate', numb_star %>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1"><b>Nội dung đánh giá</b></label>
@@ -230,12 +231,12 @@
                   <% end %>
                 </div>
                 <div class="container-fluid">
-                  <div class="row">
+                  <div id="list-img" class="row">
                     <% @review_user.images.each do |image|%>
                       <div class="col-3 form-img" id="image_<%= image.id %>">
                         <img src="<%= image.picture.url if image.picture? %>" class="form-image" alt="#">
                         <div class="form-overlay">
-                          <a href="#" class="form-icon" data-img="<%= image.id %>">
+                          <a href="#" class="form-icon delete-img" data-img="<%= image.id %>">
                             <i class="fa fa-times"></i>
                           </a>
                         </div>
