@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    binding.pry
     @review = Review.find(params[:id])
     if params[:images_edit].present?
       img_delete = params[:images_edit].split(" ")

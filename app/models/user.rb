@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :evaluations
   has_many :reviews
   has_many :restaurants, through: :follows
+  mount_uploader :image, PictureUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

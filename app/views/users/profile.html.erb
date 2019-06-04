@@ -1,0 +1,121 @@
+<div class="container" style="margin-bottom: 150px;">
+    <div class="container mt-5">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <div class="profile-userpic">
+                      <% if current_user.provider == "facebook"%>
+                        <img class="img-responsive" src="<%= current_user.image? ? current_user.image : '/img/user.png' %>">
+                      <% else %>
+                        <img class="img-responsive" src="<%= current_user.image? ? current_user.image.url : '/img/user.png' %>">
+                      <% end %>
+                    </div>
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            <%= current_user.name %>
+                        </div>
+                    </div>
+                    <div class="profile-usermenu">
+                        <ul class="user-nav">
+                            <li class="active" id="proInfo">
+                                <a href="<%= profile_users_url%>">
+                                    <i class="fa fa-pencil-square-o "></i>
+                                    Thông tin cá nhân
+                                </a>
+                            </li>
+                            <!--<li id="proChangePass">-->
+                                <!--<a href="/users/logout">-->
+                                    <!--<i class="fa fa-user"></i>-->
+                                    <!--Đổi mật khẩu-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li id="proChangeAvatar">-->
+                                <!--<a href="/tai-khoan/doi-hinh-dai-dien">-->
+                                    <!--<i class="fa fa-photo"></i>-->
+                                    <!--Cập nhật hình đại diện-->
+                                <!--</a>-->
+                            <!--</li>-->
+
+                            <!--<li id="proManageAddress">-->
+                                <!--<a href="/tai-khoan/quan-ly-dia-chi">-->
+                                    <!--<i class="fa fa-cog"></i>-->
+                                    <!--Quản lý địa chỉ-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href="<%= destroy_user_session_path %>">
+                                    <i class="fa fa-sign-out"></i>
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <div class="row mb-5">
+                                    <div class="col-12" style="text-align: center">
+                                        <h3 style="margin: 0">Thông tin tài khoản</h3>
+                                    </div>
+                                </div>
+                                <%= form_for(current_user, url: user_path(current_user), html: {method: 'put', :multipart => true}) do |f|%>
+                                  <div class="form-group row">
+                                    <label for="first_name" class="col-3 col-form-label" style="text-align: right"><b>Họ tên</b></label>
+                                    <div class="col-7">
+                                      <%= f.text_field :name,:required => true, class: "form-control", placeholder: "Nguyen Van A"%>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="first_name" class="col-3 col-form-label" style="text-align: right"><b>Email</b></label>
+                                    <div class="col-7">
+                                      <%= f.text_field :email, :required => true, class: "form-control-plaintext", :readonly => true%>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="first_name" class="col-3 col-form-label" style="text-align: right"><b>Ngày sinh</b></label>
+                                    <div class="col-7">
+                                      <%= f.date_field :birthday, class: "form-control"%>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="first_name" class="col-3 col-form-label" style="text-align: right"><b>Mô tả</b></label>
+                                    <div class="col-7">
+                                      <%= f.text_area :descriptions, class: "form-control"%>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="first_name" class="col-3 col-form-label" style="text-align: right"><b>Ảnh đại diện</b></label>
+                                    <div class="col-7">
+                                      <%= f.file_field :image, class: "form-control"%>
+                                    </div>
+                                    <div class="container-fluid row mt-3">
+                                      <div class="col-5"></div>
+                                      <div id="list-img" class="col-3">
+
+                                      </div>
+                                      <div class="col-4"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <div class="col-5"></div>
+                                    <div class="col-7">
+                                      <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                    </div>
+                                  </div>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

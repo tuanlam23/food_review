@@ -245,6 +245,7 @@ $(document).on("turbolinks:load", function () {
             $("#images_add").val(images_add + " " + id);
             $("#" + id + "_img").remove();
         }
+        $("#user_image").val(null);
     });
 
 
@@ -256,6 +257,18 @@ $(document).on("turbolinks:load", function () {
         for(var i = 0; i < files.length; i++){
             console.log(files[i].name)
             var html = "<div class='col-3 form-img picture-form' id='" + i + "_img'>" + "<img src=\"" + URL.createObjectURL(files[i]) + "\" class='form-image'>" +
+                "<div class='form-overlay'>" + "<a href='#' class='form-icon img-input' data-num='"+ i + "' data-img=\""  + files[i].name + "\"><i class='fa fa-times'></i></a></div></div>"
+            $("#list-img").append(html);
+        }
+    });
+
+
+    $('body').on('change', '#user_image', function(e) {
+        var files = e.target.files;
+        $(".picture-form").remove();
+        for(var i = 0; i < files.length; i++){
+            console.log(files[i].name)
+            var html = "<div class='form-img picture-form' id='" + i + "_img'>" + "<img src=\"" + URL.createObjectURL(files[i]) + "\" class='form-image-user'>" +
                 "<div class='form-overlay'>" + "<a href='#' class='form-icon img-input' data-num='"+ i + "' data-img=\""  + files[i].name + "\"><i class='fa fa-times'></i></a></div></div>"
             $("#list-img").append(html);
         }

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get :follow
     collection do
       get :profile
+      get :logout
     end
   end
 
