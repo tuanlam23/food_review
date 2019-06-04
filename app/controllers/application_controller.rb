@@ -21,5 +21,11 @@ class ApplicationController < ActionController::Base
     @districts = Area.where(parent_id: session[:city])
     @categories = Category.all
     @header = true
+    users = []
+    user_review = Review.all.group(:user_id).count
+    user_review.sort_by(&:last).reverse[0...12].each do |user|
+      users << user[0]
+    end
+    @top_users = User.where(id: users)
   end
 end

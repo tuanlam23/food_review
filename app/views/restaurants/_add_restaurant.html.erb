@@ -1,0 +1,53 @@
+<div class="col-sm-6 col-md-4 col-lg-3 featured-responsive">
+  <div class="featured-place-wrap">
+    <a href="<%= restaurant_path(restaurant)%>">
+      <img src="<%= restaurant.picture.url if restaurant.picture? %>" class="img-fluid img-product" alt="#">
+      <div class="featured-title-box f-content">
+        <a href="<%= restaurant_path(restaurant) %>" class="shop-title">
+          <%= restaurant.name %>
+        </a>
+        <ul>
+          <li>
+            <p>
+              <% (1..5).each do |number| %>
+                  <% star = restaurant.number_star >= number ? 'fa-star' : 'fa-star-o'%>
+                  <i class="fa <%= star %>"></i>
+              <% end %>
+            </p>
+          </li>
+          <li>
+            <span class="icon-location-pin"></span>
+            <p><%= restaurant.address + ", " + restaurant.area.district%></p>
+          </li>
+        </ul>
+        <div class="items-review">
+          <% if restaurant.reviews.present? %>
+              <% review = restaurant.reviews.first%>
+              <div class="avatar">
+                <a href="<%= user_path(review.user)%>">
+                  <img class="img-profile rounded-circle img-profile" src="<%=review.user.image? ? review.user.image.url : '/img/user.png' %>"/>
+                </a>
+              </div>
+              <div class="users-content block-with-text">
+                <a href="<%= user_path(review.user)%>" target="_blank"><b><%= review.user.name %></b></a>
+                <a href="<%= restaurant_path(restaurant) %>" target="_blank">
+                  <%= review.content %>
+                </a>
+              </div>
+          <% else %>
+              <div style="height: 32px"><span>Chưa có đánh giá nào</span></div>
+          <% end %>
+        </div>
+        <div class="items-review">
+          <span><%= restaurant.reviews.size %> Đánh giá</span>
+          <% if current_user.present? %>
+              <a href="#" class="follow <%= 'res-active' if Follow.check_follow(restaurant.id, current_user.id) %>" data-res="<%= restaurant.id %>" data-url="<%= follow_restaurants_path %>">
+                <i class="fa fa-bookmark"></i>
+                Lưu
+              </a>
+          <% end %>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

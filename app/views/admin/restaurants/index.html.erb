@@ -34,10 +34,10 @@
                 <td><a href="<%= edit_admin_restaurant_path(res) %>">Edit</a></td>
               </tr>
           <% end %>
-          <%= will_paginate @restaurants, renderer: BootstrapPagination::Rails %>
+          <%= will_paginate @restaurants, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
           </tbody>
         </table>
-        <%= will_paginate @restaurants, renderer: BootstrapPagination::Rails %>
+        <%= will_paginate @restaurants, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
     </div>
   </div>

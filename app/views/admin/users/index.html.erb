@@ -21,10 +21,10 @@
                 <td><%= user.provider %></td>
               </tr>
           <% end %>
-          <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+          <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
           </tbody>
         </table>
-        <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+        <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
     </div>
   </div>

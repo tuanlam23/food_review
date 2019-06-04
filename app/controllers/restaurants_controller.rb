@@ -13,9 +13,10 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @reviews = @restaurant.reviews
+    @reviews = @restaurant.reviews.paginate(page: params[:page], per_page: 3)
     @review = Review.new
     @review_user = @restaurant.reviews.find_by(user_id: current_user.id) if current_user
+    @address = @restaurant.address + ", " + @restaurant.area.district
   end
 
   def search

@@ -736,3 +736,99 @@ a.remove-comment-btn{
     min-height: 435px;
     border: 1px solid #ddd;
 }
+
+
+#tab-footer-top-friend-user{
+    background-color: #fff;
+    padding: 10px 0;
+    float: left;
+    clear: both;
+    width: 100%;
+    position: relative;
+    z-index: 11;
+    margin-top: 30px;
+}
+.home-tab {
+    padding: 0;
+    margin: 0 auto;
+}
+.home-tab li {
+    display: inline-block;
+    font-size: 12px;
+    position: relative;
+}
+
+.home-tab li a{
+    color: #c00;
+    float: left;
+    padding: 15px 0px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#tab-footer-top-user{
+
+}
+
+#footer-down-app-wrap{
+    background: #fff;
+    height: 140px;
+    margin-bottom: -20px;
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+}
+.footer-down-app{
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    overflow: hidden;
+}
+.footer-friends{
+    width: 96%;
+    clear: both;
+}
+
+.footer-friends .items {
+    width: 60px;
+    float: left;
+    margin-right: 9px;
+    text-align: center;
+}
+
+.footer-friends .footer-friends-data {
+    float: left;
+    width: 60px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 11px;
+    white-space: nowrap;
+}
+.footer-friends .footer-friends-data a {
+    width: 60px;
+    float: left;
+    text-align: center;
+    white-space: normal;
+    color: #333;
+    text-decoration: none;
+    outline: 0;
+}
+
+.footer-friends .footer-friends-data .user-name {
+    float: left;
+    clear: both;
+    text-align: center;
+    width: 60px;
+    max-height: 35px;
+}
+
+.footer-friends .footer-friends-data img {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: 0;
+    display: block;
+}

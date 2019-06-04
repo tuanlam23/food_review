@@ -1,4 +1,4 @@
-require "will_paginate-bootstrap"
+# require "will_paginate-bootstrap"
 class Admin::RestaurantsController < Admin::AdminController
 
   def index
