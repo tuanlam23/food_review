@@ -741,7 +741,7 @@ a.remove-comment-btn{
 #tab-footer-top-friend-user{
     background-color: #fff;
     padding: 10px 0;
-    float: left;
+    /*float: left;*/
     clear: both;
     width: 100%;
     position: relative;
@@ -831,4 +831,30 @@ a.remove-comment-btn{
     border-radius: 60px;
     border: 0;
     display: block;
+}
+
+
+
+.txt14 {
+    font-family: Arial;
+    font-weight: 400;
+    font-size: 13px;
+    color: #999999;
+    line-height: 1.7;
+}
+li.txt14{
+    list-style-type: none;
+}
+
+.item-gallery-footer {
+    display: block;
+    position: relative;
+    width: calc((100% - 50px) / 4 );
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.wrap-pic-w img {
+    width: 100%;
+    vertical-align: middle;
+    border-style: none;
 }

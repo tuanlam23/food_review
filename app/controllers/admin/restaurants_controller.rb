@@ -16,6 +16,9 @@ class Admin::RestaurantsController < Admin::AdminController
     @restaurant = Restaurant.new(restaurant_params)
     params[:food].each do |food|
       @restaurant.foods << Food.new(food_params(food))
+      @categories = Category.pluck(:name, :id)
+      @city = Area.where(parent_id: nil).pluck(:name, :id)
+      @area = Area.where(parent_id: @city.first).pluck(:name, :id)
     end
     @restaurant.save
     if @restaurant.valid?
@@ -26,7 +29,7 @@ class Admin::RestaurantsController < Admin::AdminController
   end
 
   def edit
-
+    @retaurant = Restaurant.find(params[:id])
   end
 
   private

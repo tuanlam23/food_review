@@ -6,35 +6,35 @@ class Restaurant < ApplicationRecord
   has_many :evaluations
   has_many :reviews
   has_many :users, through: :follows
-  # after_save :reindex
+  after_save :reindex
   mount_uploader :picture, PictureUploader
-  # searchkick language: "vietnamese", merge_mappings: true,
-  #  settings:{
-  #      analysis: {
-  #          analyzer:{
-  #              vi_analyzer:{
-  #                  type:"custom",
-  #                  tokenizer:"standard",
-  #                  filter: ["lowercase"]
-  #              }
-  #          }
-  #      }
-  #  },
-  #  mappings: {
-  #     restaurant: {
-  #       properties: {
-  #           name: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
-  #           restaurant_id: {type: "integer"},
-  #           category_id: {type: "integer"},
-  #           category_name: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
-  #           area_id: {type: "integer"},
-  #           address: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
-  #           number_star: {type: "integer"},
-  #           created_at: {type: "date"},
-  #           food: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}}
-  #       }
-  #     }
-  # }
+  searchkick language: "vietnamese", merge_mappings: true,
+   settings:{
+       analysis: {
+           analyzer:{
+               vi_analyzer:{
+                   type:"custom",
+                   tokenizer:"standard",
+                   filter: ["lowercase"]
+               }
+           }
+       }
+   },
+   mappings: {
+      restaurant: {
+        properties: {
+            name: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
+            restaurant_id: {type: "integer"},
+            category_id: {type: "integer"},
+            category_name: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
+            area_id: {type: "integer"},
+            address: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}},
+            number_star: {type: "integer"},
+            created_at: {type: "date"},
+            food: {type: "string", analyzer: "vi_analyzer", fields: {raw:{type: "keyword"}}}
+        }
+      }
+  }
 
   def search_data
     {
