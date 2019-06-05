@@ -1,6 +1,6 @@
 <div class="panel-body">
   <div class="row">
-    <%= form_for @retaurant, url: {action: "create"} do |f| %>
+    <%= form_for @restaurant, url: {action: "create"} do |f| %>
         <div class="col-lg-6">
           <div class="form-group">
             <label>Tên cửa hàng</label>
@@ -14,13 +14,13 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label>Thành phố</label>
-                <%= select_tag 'restaurant[city]', options_for_select(@city) , class: "form-control"%>
+                <%= select_tag 'restaurant[city]', options_for_select(@city, @current_city) , class: "form-control"%>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="form-group">
                 <label>Quận</label>
-                <%= select_tag 'restaurant[area_id]', options_for_select(@area) , class: "form-control"%>
+                <%= select_tag 'restaurant[area_id]', options_for_select(@area, @current_area) , class: "form-control"%>
               </div>
             </div>
           </div>
@@ -49,7 +49,13 @@
         <div class="col-lg-6">
           <h2>Menu</h2>
           <div id="menu-food">
-            <%= render 'add_food'%>
+            <% if @restaurant.foods.present? %>
+              <% @restaurant.foods.each do |food| %>
+                  <%= render partial: "food", locals: {food: food} %>
+              <% end %>
+            <% else %>
+                <%= render 'add_food'%>
+            <% end %>
           </div>
           <a href="#" id="add_food">Thêm </a>đồ
         </div>

@@ -6,7 +6,7 @@ class Admin::RestaurantsController < Admin::AdminController
   end
 
   def new
-    @retaurant = Restaurant.new
+    @restaurant = Restaurant.new
     @categories = Category.pluck(:name, :id)
     @city = Area.where(parent_id: nil).pluck(:name, :id)
     @area = Area.where(parent_id: @city.first).pluck(:name, :id)
@@ -16,9 +16,6 @@ class Admin::RestaurantsController < Admin::AdminController
     @restaurant = Restaurant.new(restaurant_params)
     params[:food].each do |food|
       @restaurant.foods << Food.new(food_params(food))
-      @categories = Category.pluck(:name, :id)
-      @city = Area.where(parent_id: nil).pluck(:name, :id)
-      @area = Area.where(parent_id: @city.first).pluck(:name, :id)
     end
     @restaurant.save
     if @restaurant.valid?
@@ -29,7 +26,16 @@ class Admin::RestaurantsController < Admin::AdminController
   end
 
   def edit
-    @retaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
+    @categories = Category.pluck(:name, :id)
+    @city = Area.where(parent_id: nil).pluck(:name, :id)
+    @current_city = @restaurant.area.parent_id
+    @area = Area.where(parent_id: @current_city).pluck(:name, :id)
+    @current_area = @restaurant.area.id
+  end
+
+  def update
+
   end
 
   private
