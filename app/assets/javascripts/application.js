@@ -274,4 +274,32 @@ $(document).on("turbolinks:load", function () {
         }
     });
 
+    $("body").on("change", "#restaurant_city", function (e) {
+       e.preventDefault();
+       var id = $(this).val();
+        $.ajax("/admin/restaurants/area?id="+ id, {
+            type: 'get',
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (res) {
+                $("#restaurant_area_id").html("");
+                res.data.forEach(function (option) {
+                    $("#restaurant_area_id").append($('<option>', {
+                        value: option[1],
+                        text : option[0]
+                    }));
+                });
+            },
+            error: function (res) {
+                console.log(res);
+            }
+        });
+    });
+
+    $("body").on("click", ".del-food", function (e) {
+        e.preventDefault();
+        $(this).parent().parent().parent().remove();
+    });
+
 });

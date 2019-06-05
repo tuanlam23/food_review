@@ -35,7 +35,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'admin#index'
-    resources :restaurants
+    resources :restaurants do
+      collection do
+        get :area
+      end
+    end
     resources :users
   end
 end

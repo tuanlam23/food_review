@@ -3,20 +3,34 @@
     <div class="col-lg-12">
       <div class="form-group">
         <label>Tên đồ</label>
-        <%= text_field_tag 'food[][name]', food.name, class: "form-control", :required => true%>
+        <%= text_field_tag "food[#{food.id}][name]", food.name, class: "form-control", :required => true%>
       </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-8">
       <div class="form-group">
         <label>Picture</label>
-        <%= file_field_tag 'food[][picture]', :required => true%>
+        <%= file_field_tag "food[#{food.id}][picture]"%>
       </div>
     </div>
+    <div  class="col-lg-4">
+      <div class="form-img" id="image_<%= food.id %>">
+        <img src="<%= food.picture.url if food.picture? %>" class="form-image" alt="#">
+        <div class="form-overlay">
+          <a href="#" class="form-icon delete-img" data-img="<%= food.id %>">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div class="col-lg-12">
       <div class="form-group">
         <label>Giá</label>
-        <%= number_field_tag 'food[][price]', food.price, class: "form-control", :required => true%>
+        <%= number_field_tag "food[#{food.id}][price]", food.price, class: "form-control", :required => true%>
       </div>
+    </div>
+    <div class="col-lg-12">
+      <a href="#" class="del-food" style="float: right">Xóa</a>
     </div>
   </div>
 </div>
