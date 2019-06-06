@@ -1,3 +1,7 @@
-<% restaurants.each do |restaurant|%>
-    <%= render partial: "add_restaurant", locals: {restaurant: restaurant} %>
+<%if restaurants.present?%>
+    <% restaurants.each do |restaurant|%>
+        <%= render partial: "add_restaurant", locals: {restaurant: restaurant} %>
+    <% end %>
+<% else %>
+    <h5>Chưa có dữ liệu</h5>
 <% end %>

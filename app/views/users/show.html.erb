@@ -41,7 +41,7 @@
                   <% if current_user.present? && current_user.id == review.user_id %>
                       <div class="review-change">
                         <span class="review-destroy" data-id="<%= review.id %>" data-url="<%= review_path(review) %>" style="float: right"><i class="fa fa-times"></i></span>
-                        <a href="#" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></a>
+                        # <a href="#" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></a>
                       </div>
                   <% end %>
                 </div>

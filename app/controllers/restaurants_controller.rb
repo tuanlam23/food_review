@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:follow]
   before_action :check_user, only: [:follow]
-  before_action :set_city_filter, only: [:show, :index, :search]
+  before_action :set_city_filter, only: [:show, :index, :search, :load_new]
   def index
     if current_user.present?
       @recommend_res = current_user.recommend_restaurants.map(&:first)[0..7]
@@ -38,7 +38,7 @@ class RestaurantsController < ApplicationController
   end
 
   def load_new
-    restaurants = Restaurant.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
+    restaurants = Restaurant.where(area_id: @districts.pluck(:id)).order(created_at: :desc).paginate(page: params[:page], per_page: 8)
     strhtml = render_to_string partial: '/restaurants/restaurant', locals: { restaurants: restaurants, user: current_user }, formats: :html
     content = strhtml.html_safe
     render json: {content: content, last_page: restaurants.total_pages,

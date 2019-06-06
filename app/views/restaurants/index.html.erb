@@ -82,7 +82,8 @@
           </ul>
         </div>
       </div>
-      <div class="col-sm-12 pt-2">
+      <div class="col-sm-12 pt-2 pb-2">
+      <% if @restaurants.present? %>
         <div class="row" id="list_res">
             <% @restaurants.each do |restaurant|%>
               <%= render partial: "add_restaurant", locals: {restaurant: restaurant} %>
@@ -95,6 +96,11 @@
             </a>
           </div>
         </div>
+      <% else %>
+      <div class="row" id="list_res">
+        <h5>Chưa có dữ liệu</h5>
+      </div>  
+      <% end %>  
       </div>
     </div>
   </div>

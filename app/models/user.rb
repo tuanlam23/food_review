@@ -34,19 +34,52 @@ class User < ApplicationRecord
   def recommend_restaurants
     other_users = User.where.not(id: self.id)
     recommended = Hash.new(0)
+    user_weight = Hash.new(0)
     other_users.each do |user|
       common_restaurants = user.restaurants & self.restaurants
-      weight = common_restaurants.size.to_f / user.restaurants.size
+      total_restaurants = user.restaurants | self.restaurants
+      weight = common_restaurants.size.to_f / total_restaurants.size
+      user_weight[user.email] = weight
       (user.restaurants - common_restaurants).each do |restaurant|
         recommended[restaurant] += weight
       end
     end
     sorted_recommended = recommended.sort_by { |key, value| value }.reverse
+    # in
+    recommen = []
+    sorted_recommended.each do |item|
+      recommen << [item[0].name, item[1]]
+    end
+    puts user_weight
+    puts recommen
     if sorted_recommended.blank?
       res = self.restaurants.map(&:id)
       return  Restaurant.where.not(id: res).order(number_star: :desc)
     else
       return sorted_recommended
     end
+
+
+    # other_users = User.where.not(id: self.id)
+    # recommended = Hash.new(0)
+    # other_users.each do |user|
+    #   common_restaurants = user.restaurants & self.restaurants
+    #   weight = common_restaurants.size.to_f / user.restaurants.size
+    #   (user.restaurants - common_restaurants).each do |restaurant|
+    #     recommended[restaurant] += weight
+    #   end
+    # end
+    # sorted_recommended = recommended.sort_by { |key, value| value }.reverse
+    # recommen = []
+    # sorted_recommended.each do |item|
+    #   recommen << [item[0].name, item[1]]
+    # end
+    # puts recommen
+    # if sorted_recommended.blank?
+    #   res = self.restaurants.map(&:id)
+    #   return  Restaurant.where.not(id: res).order(number_star: :desc)
+    # else
+    #   return sorted_recommended
+    # end
   end
 end
